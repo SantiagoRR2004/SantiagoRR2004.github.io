@@ -1,0 +1,352 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Examen</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+body {
+font-family: 'Roboto', Arial, sans-serif;
+background-color: #f9f9f9;
+color: #333;
+line-height: 1.6;
+margin: 0;
+padding: 20px;
+}
+.correct {
+    color: #28a745; /* A brighter green for better visibility */
+    font-weight: bold;
+}
+.incorrect {
+    color: #dc3545; /* A brighter red for better visibility */
+    font-weight: bold;
+}
+.question {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.question p {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.question li {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    list-style-type: none;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+.question li:hover {
+    background-color: #f1f1f1; /* Highlight on hover */
+}
+input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    transform: scale(1.35);
+    margin-right: 10px;
+    cursor: pointer;
+}
+.correct-answer {
+    display: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+.answered {
+    pointer-events: none;
+}
+#testForm {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#submitButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#submitButton:hover {
+    background-color: #0056b3;
+}
+#scoreDisplay {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}     
+        </style>
+    </head>
+    <body>
+        <form id="testForm" onsubmit="return submitForm()">
+    
+            <div class="multipleChoice question">
+                <p>1: Which of the following statements about classifier performance and overfitting are correct? [Tema 6Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_0" value="A"> A) ROC curves are used to visualize database performance in backend storage systems.</li><li><input type="checkbox" name="question_0" value="B"> B) Classifiers in production should be monitored for drift and changing input patterns.</li><li><input type="checkbox" name="question_0" value="C"> C) Overfitting often occurs due to excessive model complexity relative to training data.</li><li><input type="checkbox" name="question_0" value="D"> D) High accuracy with low sensitivity can still be problematic in IoT failure detection.</li><li><input type="checkbox" name="question_0" value="E"> E) A model that performs well on training data but poorly on real-world data is overfitted.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B, C, D, E</p>
+                <input type="hidden" name="correct_0" value="B, C, D, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>2: Which of the following challenges must IoT-cloud platforms address to ensure interoperability and effective integration? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_1" value="A"> A) Presence of virtual and physical sensors.</li><li><input type="checkbox" name="question_1" value="B"> B) Semantically diverse data formats.</li><li><input type="checkbox" name="question_1" value="C"> C) Data quality and timestamp inconsistencies.</li><li><input type="checkbox" name="question_1" value="D"> D) Fixed data schemas enforced by IoT gateways.</li><li><input type="checkbox" name="question_1" value="E"> E) Homogeneous reference units across all devices.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, C</p>
+                <input type="hidden" name="correct_1" value="A, B, C">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>3: In the context of IoT-cloud integration, what is the key limitation that edge computing directly addresses? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_2" value="A"> A) Real-time response requirements in field applications.</li><li><input type="checkbox" name="question_2" value="B"> B) Security compliance in cloud-hosted applications.</li><li><input type="checkbox" name="question_2" value="C"> C) Lack of storage capacity in centralized data centers.</li><li><input type="checkbox" name="question_2" value="D"> D) Low cost of on-premises infrastructure.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A</p>
+                <input type="hidden" name="correct_2" value="A">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>4: Which fog system characteristics are especially important when designing for high-availability and fault-tolerant industrial IoT systems? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_3" value="A"> A) Exclusive cloud dependence to reduce infrastructure costs.</li><li><input type="checkbox" name="question_3" value="B"> B) Persistent block storage through services like OpenStack Cinder.</li><li><input type="checkbox" name="question_3" value="C"> C) Load balancing across fog nodes based on latency and capacity.</li><li><input type="checkbox" name="question_3" value="D"> D) Support for watchdog nodes to monitor peer failures.</li><li><input type="checkbox" name="question_3" value="E"> E) Failover-aware mesh routing in the network layer.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: C, D, E</p>
+                <input type="hidden" name="correct_3" value="C, D, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>5: What is the primary reason that Arduino boards are rarely used in commercial products? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_4" value="A"> A) They cannot support analog input.</li><li><input type="checkbox" name="question_4" value="B"> B) They are too large and power-inefficient for most production use cases.</li><li><input type="checkbox" name="question_4" value="C"> C) What are you talking about ??? They are used in commercial products!!</li><li><input type="checkbox" name="question_4" value="D"> D) Their processors cannot run real-time operating systems.</li><li><input type="checkbox" name="question_4" value="E"> E) Their GPIO pins are not programmable.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B</p>
+                <input type="hidden" name="correct_4" value="B">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>6: In OpenStack, which component is responsible for launching and managing multiple cloud applications using templates that resemble AWS CloudFormation? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_5" value="A"> A) Heat</li><li><input type="checkbox" name="question_5" value="B"> B) Keystone</li><li><input type="checkbox" name="question_5" value="C"> C) Ceilometer</li><li><input type="checkbox" name="question_5" value="D"> D) Glance</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A</p>
+                <input type="hidden" name="correct_5" value="A">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>7: What type of IoT data source is best characterized by bidirectional communication, format flexibility, and self-tuning capabilities? [Tema 6Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_6" value="A"> A) Stateless</li><li><input type="checkbox" name="question_6" value="B"> B) Passive</li><li><input type="checkbox" name="question_6" value="C"> C) Dynamic</li><li><input type="checkbox" name="question_6" value="D"> D) Active</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: C</p>
+                <input type="hidden" name="correct_6" value="C">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>8: An IoT start-up needs rapid development, scalability, minimal investment, and real-time analytics. Which cloud platforms or models fit? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_7" value="A"> A) On-premise private cloud with manual scaling.</li><li><input type="checkbox" name="question_7" value="B"> B) Amazon AWS IoT with integrated rules engine and SDKs.</li><li><input type="checkbox" name="question_7" value="C"> C) Open-source platform like OpenIoT supporting semantic data models.</li><li><input type="checkbox" name="question_7" value="D"> D) SaaS solution tailored to general medical record keeping.</li><li><input type="checkbox" name="question_7" value="E"> E) PaaS model like Microsoft Azure IoT.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B, C, E</p>
+                <input type="hidden" name="correct_7" value="B, C, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>9: In selecting a microcontroller for a real-time industrial automation controller, which features are essential? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_8" value="A"> A) Real-time clock (RTC) with battery backup.</li><li><input type="checkbox" name="question_8" value="B"> B) Support for floating-point arithmetic.</li><li><input type="checkbox" name="question_8" value="C"> C) Interrupt-enabled GPIOs.</li><li><input type="checkbox" name="question_8" value="D"> D) Integrated wireless radio.</li><li><input type="checkbox" name="question_8" value="E"> E) Fast I/O switching capability.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B, C, E</p>
+                <input type="hidden" name="correct_8" value="B, C, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>10: Which trade-offs should be considered when selecting between analog and digital sensors? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_9" value="A"> A) Complexity of signal routing.</li><li><input type="checkbox" name="question_9" value="B"> B) Requirement for signal conditioning.</li><li><input type="checkbox" name="question_9" value="C"> C) Data format compatibility with machine learning models.</li><li><input type="checkbox" name="question_9" value="D"> D) Noise immunity.</li><li><input type="checkbox" name="question_9" value="E"> E) Scalability across networked nodes.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, D, E</p>
+                <input type="hidden" name="correct_9" value="A, B, D, E">
+            </div>
+            
+            <input id="submitButton" type="submit" value="Enviar respuestas">
+        </form>
+        <p id="scoreDisplay"></p>
+    </body>
+    </html>
+    <script>
+function submitForm() {
+    var form = document.getElementById("testForm");
+    form.elements["submitButton"].disabled = true;
+
+    var correctGlobal = 0;
+    var incorrectGlobal = 0;
+    var unanswered = 0;
+    var totalScore = 0;
+
+    var questions = document.getElementsByClassName("singleChoice");
+
+    for (var question of questions) {
+        var score = singleChoice(question);
+        if (score === 1) {
+            correctGlobal++;
+            totalScore += score;
+        } else if (isNaN(score)) {
+            unanswered++;
+        } else {
+            incorrectGlobal++;
+            totalScore += score;
+        }
+    }
+
+    var questions = document.getElementsByClassName("multipleChoice");
+
+    for (var question of questions) {
+        var score = multipleChoice(question);
+        if (score === 1) {
+            correctGlobal++;
+            totalScore += score;
+        } else if (isNaN(score)) {
+            unanswered++;
+        } else {
+            incorrectGlobal++;
+            totalScore += score;
+        }
+    }
+
+    console.log("Score out of all questions: " + totalScore);
+    console.log("Correct: " + correctGlobal);
+    console.log("Incorrect: " + incorrectGlobal);
+    console.log("Unanswered: " + unanswered);
+
+    // We calculate the score out of 10
+    totalScore = ((totalScore / (correctGlobal + incorrectGlobal + unanswered)) * 10).toFixed(2);
+
+    console.log("Score out of 10: " + totalScore);
+
+    var scoreDisplay = document.getElementById("scoreDisplay");
+    scoreDisplay.innerHTML = "Preguntas acertadas: " + correctGlobal + "<br>Preguntas falladas: " + incorrectGlobal + "<br>Puntuación total: " + totalScore + "/10";
+
+    return false;
+}
+function singleChoice(question) {
+    var selectedInput = question.querySelector("input:checked");
+    var correctAnswer = question.querySelector(".correct-answer");
+    correctAnswer.style.display = "block";
+
+    // We only count the ones with radio buttons
+    var options = question.querySelectorAll("input[type=radio]");
+    var numOptions = options.length;
+
+    // Disable all radio buttons to prevent changing the answer
+    options.forEach(input => input.disabled = true);
+
+    if (selectedInput && selectedInput.value === correctAnswer.innerHTML.split(":")[1].trim()) {
+        correctAnswer.classList.add("correct");
+    } else {
+        correctAnswer.classList.add("incorrect");
+    }
+
+    // We log the number of the question and score
+
+    // If it is correct we return 1
+    if (selectedInput && selectedInput.value === correctAnswer.innerHTML.split(":")[1].trim()) {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: 1");
+        return 1;
+    } //If there is no answer we return NaN
+    else if (selectedInput === null) {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: NaN");
+        return NaN;
+    } //If it is incorrect we return the penalty for random guessing
+    else {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: -1/" + (numOptions - 1));
+        return -1/(numOptions - 1);
+    }
+}
+function multipleChoice(question) {
+    var selectedInputs = question.querySelectorAll("input:checked");
+
+    // Get the correct answer element
+    var correctAnswer = question.querySelector(".correct-answer");
+
+    // Extract the correct answers from the hidden input field
+    var correctAnswers = question.querySelector("input[name^='correct_']");
+    var correctAnswersArray = correctAnswers ? correctAnswers.value.split(",").map(x => x.trim()) : [];
+
+    // Display the correct answers
+    question.querySelectorAll(".correct-answer").forEach(x => x.style.display = "block");
+
+    // Get the total number of checkbox options
+    var options = question.querySelectorAll("input[type=checkbox]");
+    var numOptions = options.length;
+
+    // Disable all checkboxes to prevent changing the answer
+    options.forEach(input => input.disabled = true);
+
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
+
+    // Iterate over selected inputs to mark correct/incorrect answers
+    for (var selectedInput of selectedInputs) {
+        var listItem = selectedInput.closest("li"); // Get the <li> containing the checkbox
+
+        if (listItem) {
+            if (correctAnswersArray.includes(selectedInput.value)) {
+                // listItem.classList.add("correct"); // Apply class to the entire list item
+                correct++;
+            } else {
+                // listItem.classList.add("incorrect");
+                incorrect++;
+            }
+        }
+    }
+
+    // We log the number of the question and score
+
+    // If all the correct answers are selected and no incorrect answers are selected
+    // we return 1
+    if (correct === correctAnswersArray.length && incorrect === 0) {
+        correctAnswer.classList.add("correct");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: 1");
+        return 1;
+    } // If there are no answers we return NaN
+    else if (selectedInputs.length === 0) {
+        correctAnswer.classList.add("incorrect");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: NaN");
+        return NaN;
+    } // If there are incorrect answers we return the penalty for random guessing
+    else {
+        correctAnswer.classList.add("incorrect");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: -0.5");
+        return -0.5;
+    }
+
+}
+</script>

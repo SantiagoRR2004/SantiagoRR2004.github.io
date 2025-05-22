@@ -1,0 +1,352 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Examen</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+body {
+font-family: 'Roboto', Arial, sans-serif;
+background-color: #f9f9f9;
+color: #333;
+line-height: 1.6;
+margin: 0;
+padding: 20px;
+}
+.correct {
+    color: #28a745; /* A brighter green for better visibility */
+    font-weight: bold;
+}
+.incorrect {
+    color: #dc3545; /* A brighter red for better visibility */
+    font-weight: bold;
+}
+.question {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.question p {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.question li {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    list-style-type: none;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+.question li:hover {
+    background-color: #f1f1f1; /* Highlight on hover */
+}
+input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    transform: scale(1.35);
+    margin-right: 10px;
+    cursor: pointer;
+}
+.correct-answer {
+    display: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+.answered {
+    pointer-events: none;
+}
+#testForm {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#submitButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#submitButton:hover {
+    background-color: #0056b3;
+}
+#scoreDisplay {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}     
+        </style>
+    </head>
+    <body>
+        <form id="testForm" onsubmit="return submitForm()">
+    
+            <div class="multipleChoice question">
+                <p>1: Which statements best describe realistic outcomes of IoT-enabled predictive maintenance? [Tema 8Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_0" value="A"> A) It completely removes the occurrence of unexpected failures in all cases.</li><li><input type="checkbox" name="question_0" value="B"> B) It can lead to fully autonomous part ordering and replacement scheduling.</li><li><input type="checkbox" name="question_0" value="C"> C) It eliminates the need for all human intervention in the maintenance process.</li><li><input type="checkbox" name="question_0" value="D"> D) It helps in identifying component wear patterns in advance to schedule timely intervention.</li><li><input type="checkbox" name="question_0" value="E"> E) It shifts the paradigm from time-based to condition-based maintenance.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B, D, E</p>
+                <input type="hidden" name="correct_0" value="B, D, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>2: In OpenStack, which component is responsible for launching and managing multiple cloud applications using templates that resemble AWS CloudFormation? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_1" value="A"> A) Heat</li><li><input type="checkbox" name="question_1" value="B"> B) Keystone</li><li><input type="checkbox" name="question_1" value="C"> C) Ceilometer</li><li><input type="checkbox" name="question_1" value="D"> D) Glance</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A</p>
+                <input type="hidden" name="correct_1" value="A">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>3: Which of the following best explains why the PaaS model is considered the most widespread for IoT cloud service delivery? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_2" value="A"> A) It offers fixed device integration contracts suitable for static networks.</li><li><input type="checkbox" name="question_2" value="B"> B) It combines access to data and services with tools for rapid application development.</li><li><input type="checkbox" name="question_2" value="C"> C) It provides access to infrastructure resources only, keeping developers away from complexity.</li><li><input type="checkbox" name="question_2" value="D"> D) It prioritizes cost reduction over development capabilities.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B</p>
+                <input type="hidden" name="correct_2" value="B">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>4: What factors should an IoT architect consider when choosing between a simple edge architecture and a fog computing topology? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_3" value="A"> A) The preference for proprietary interfaces over standardized APIs.</li><li><input type="checkbox" name="question_3" value="B"> B) The data volume generated and the need for reduction at the source.</li><li><input type="checkbox" name="question_3" value="C"> C) The ability of individual sensors to interface directly with HTTP services.</li><li><input type="checkbox" name="question_3" value="D"> D) The number and variability of sensors over time.</li><li><input type="checkbox" name="question_3" value="E"> E) The system's reliability requirements and fault tolerance strategy.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B, D, E</p>
+                <input type="hidden" name="correct_3" value="B, D, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>5: Which of the following sensors is best suited to estimate elevation changes within a building for an indoor positioning application? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_4" value="A"> A) Magnetometer.</li><li><input type="checkbox" name="question_4" value="B"> B) Thermistor.</li><li><input type="checkbox" name="question_4" value="C"> C) Barometric pressure sensor.</li><li><input type="checkbox" name="question_4" value="D"> D) Ultrasonic rangefinder.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: C</p>
+                <input type="hidden" name="correct_4" value="C">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>6: What is the biggest power drain in a typical smart object? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_5" value="A"> A) Communication module.</li><li><input type="checkbox" name="question_5" value="B"> B) Sleep mode.</li><li><input type="checkbox" name="question_5" value="C"> C) Actuator response.</li><li><input type="checkbox" name="question_5" value="D"> D) Sensor sampling.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A</p>
+                <input type="hidden" name="correct_5" value="A">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>7: A remote fog deployment in a critical infrastructure site must remain operational despite physical tampering or network disruption. Which architectural feature should be prioritized? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_6" value="A"> A) Dynamic container orchestration from the cloud.</li><li><input type="checkbox" name="question_6" value="B"> B) RESTful API for image service control.</li><li><input type="checkbox" name="question_6" value="C"> C) Peer-to-peer node monitoring and hardware-level security.</li><li><input type="checkbox" name="question_6" value="D"> D) Horizontal scalability via cloud bursting.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: C</p>
+                <input type="hidden" name="correct_6" value="C">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>8: Which of the following are realistic applications of digital twins as enabled by the Industrial Internet of Things (IIoT)? [Tema 8Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_7" value="A"> A) Managing the energy output of wind farms through virtual replicas.</li><li><input type="checkbox" name="question_7" value="B"> B) Providing immersive AR experiences for product marketing.</li><li><input type="checkbox" name="question_7" value="C"> C) Diagnosing patients remotely using a virtual replica of their medical state.</li><li><input type="checkbox" name="question_7" value="D"> D) Simulating the failure modes of jet engines before manufacturing.</li><li><input type="checkbox" name="question_7" value="E"> E) Reconstructing user behavior patterns on social media in real time.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, C, D</p>
+                <input type="hidden" name="correct_7" value="A, C, D">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>9: Which of the following scenarios illustrate the *services* functionality of IoT? [Tema 8Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_8" value="A"> A) A sensor-equipped bridge transmits structural integrity metrics to engineers.</li><li><input type="checkbox" name="question_8" value="B"> B) A user remotely switches on their home heater via smartphone.</li><li><input type="checkbox" name="question_8" value="C"> C) A retailer uses WiFi triangulation data to offer in-store promotions.</li><li><input type="checkbox" name="question_8" value="D"> D) An insurance company buys usage data from a connected tire manufacturer.</li><li><input type="checkbox" name="question_8" value="E"> E) A connected washing machine reorders detergent automatically.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: C, D, E</p>
+                <input type="hidden" name="correct_8" value="C, D, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>10: Which of the following are benefits of using OpenStack as a cloud reference architecture for IoT systems? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_9" value="A"> A) RabbitMQ enables tightly coupled communication between cloud nodes.</li><li><input type="checkbox" name="question_9" value="B"> B) Modular components like Nova and Glance allow for flexible resource control.</li><li><input type="checkbox" name="question_9" value="C"> C) Keystone handles authentication and authorization across services.</li><li><input type="checkbox" name="question_9" value="D"> D) Swift provides scalable object storage for VM images and logs.</li><li><input type="checkbox" name="question_9" value="E"> E) All OpenStack services must be deployed manually without APIs.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B, C, D</p>
+                <input type="hidden" name="correct_9" value="B, C, D">
+            </div>
+            
+            <input id="submitButton" type="submit" value="Enviar respuestas">
+        </form>
+        <p id="scoreDisplay"></p>
+    </body>
+    </html>
+    <script>
+function submitForm() {
+    var form = document.getElementById("testForm");
+    form.elements["submitButton"].disabled = true;
+
+    var correctGlobal = 0;
+    var incorrectGlobal = 0;
+    var unanswered = 0;
+    var totalScore = 0;
+
+    var questions = document.getElementsByClassName("singleChoice");
+
+    for (var question of questions) {
+        var score = singleChoice(question);
+        if (score === 1) {
+            correctGlobal++;
+            totalScore += score;
+        } else if (isNaN(score)) {
+            unanswered++;
+        } else {
+            incorrectGlobal++;
+            totalScore += score;
+        }
+    }
+
+    var questions = document.getElementsByClassName("multipleChoice");
+
+    for (var question of questions) {
+        var score = multipleChoice(question);
+        if (score === 1) {
+            correctGlobal++;
+            totalScore += score;
+        } else if (isNaN(score)) {
+            unanswered++;
+        } else {
+            incorrectGlobal++;
+            totalScore += score;
+        }
+    }
+
+    console.log("Score out of all questions: " + totalScore);
+    console.log("Correct: " + correctGlobal);
+    console.log("Incorrect: " + incorrectGlobal);
+    console.log("Unanswered: " + unanswered);
+
+    // We calculate the score out of 10
+    totalScore = ((totalScore / (correctGlobal + incorrectGlobal + unanswered)) * 10).toFixed(2);
+
+    console.log("Score out of 10: " + totalScore);
+
+    var scoreDisplay = document.getElementById("scoreDisplay");
+    scoreDisplay.innerHTML = "Preguntas acertadas: " + correctGlobal + "<br>Preguntas falladas: " + incorrectGlobal + "<br>Puntuación total: " + totalScore + "/10";
+
+    return false;
+}
+function singleChoice(question) {
+    var selectedInput = question.querySelector("input:checked");
+    var correctAnswer = question.querySelector(".correct-answer");
+    correctAnswer.style.display = "block";
+
+    // We only count the ones with radio buttons
+    var options = question.querySelectorAll("input[type=radio]");
+    var numOptions = options.length;
+
+    // Disable all radio buttons to prevent changing the answer
+    options.forEach(input => input.disabled = true);
+
+    if (selectedInput && selectedInput.value === correctAnswer.innerHTML.split(":")[1].trim()) {
+        correctAnswer.classList.add("correct");
+    } else {
+        correctAnswer.classList.add("incorrect");
+    }
+
+    // We log the number of the question and score
+
+    // If it is correct we return 1
+    if (selectedInput && selectedInput.value === correctAnswer.innerHTML.split(":")[1].trim()) {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: 1");
+        return 1;
+    } //If there is no answer we return NaN
+    else if (selectedInput === null) {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: NaN");
+        return NaN;
+    } //If it is incorrect we return the penalty for random guessing
+    else {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: -1/" + (numOptions - 1));
+        return -1/(numOptions - 1);
+    }
+}
+function multipleChoice(question) {
+    var selectedInputs = question.querySelectorAll("input:checked");
+
+    // Get the correct answer element
+    var correctAnswer = question.querySelector(".correct-answer");
+
+    // Extract the correct answers from the hidden input field
+    var correctAnswers = question.querySelector("input[name^='correct_']");
+    var correctAnswersArray = correctAnswers ? correctAnswers.value.split(",").map(x => x.trim()) : [];
+
+    // Display the correct answers
+    question.querySelectorAll(".correct-answer").forEach(x => x.style.display = "block");
+
+    // Get the total number of checkbox options
+    var options = question.querySelectorAll("input[type=checkbox]");
+    var numOptions = options.length;
+
+    // Disable all checkboxes to prevent changing the answer
+    options.forEach(input => input.disabled = true);
+
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
+
+    // Iterate over selected inputs to mark correct/incorrect answers
+    for (var selectedInput of selectedInputs) {
+        var listItem = selectedInput.closest("li"); // Get the <li> containing the checkbox
+
+        if (listItem) {
+            if (correctAnswersArray.includes(selectedInput.value)) {
+                // listItem.classList.add("correct"); // Apply class to the entire list item
+                correct++;
+            } else {
+                // listItem.classList.add("incorrect");
+                incorrect++;
+            }
+        }
+    }
+
+    // We log the number of the question and score
+
+    // If all the correct answers are selected and no incorrect answers are selected
+    // we return 1
+    if (correct === correctAnswersArray.length && incorrect === 0) {
+        correctAnswer.classList.add("correct");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: 1");
+        return 1;
+    } // If there are no answers we return NaN
+    else if (selectedInputs.length === 0) {
+        correctAnswer.classList.add("incorrect");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: NaN");
+        return NaN;
+    } // If there are incorrect answers we return the penalty for random guessing
+    else {
+        correctAnswer.classList.add("incorrect");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: -0.5");
+        return -0.5;
+    }
+
+}
+</script>

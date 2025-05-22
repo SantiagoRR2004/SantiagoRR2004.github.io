@@ -1,0 +1,352 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Examen</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+body {
+font-family: 'Roboto', Arial, sans-serif;
+background-color: #f9f9f9;
+color: #333;
+line-height: 1.6;
+margin: 0;
+padding: 20px;
+}
+.correct {
+    color: #28a745; /* A brighter green for better visibility */
+    font-weight: bold;
+}
+.incorrect {
+    color: #dc3545; /* A brighter red for better visibility */
+    font-weight: bold;
+}
+.question {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.question p {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.question li {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    list-style-type: none;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+.question li:hover {
+    background-color: #f1f1f1; /* Highlight on hover */
+}
+input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    transform: scale(1.35);
+    margin-right: 10px;
+    cursor: pointer;
+}
+.correct-answer {
+    display: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+.answered {
+    pointer-events: none;
+}
+#testForm {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#submitButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#submitButton:hover {
+    background-color: #0056b3;
+}
+#scoreDisplay {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}     
+        </style>
+    </head>
+    <body>
+        <form id="testForm" onsubmit="return submitForm()">
+    
+            <div class="multipleChoice question">
+                <p>1: What type of IoT data source is best characterized by bidirectional communication, format flexibility, and self-tuning capabilities? [Tema 6Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_0" value="A"> A) Passive</li><li><input type="checkbox" name="question_0" value="B"> B) Dynamic</li><li><input type="checkbox" name="question_0" value="C"> C) Active</li><li><input type="checkbox" name="question_0" value="D"> D) Stateless</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B</p>
+                <input type="hidden" name="correct_0" value="B">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>2: Which features are emphasized in the OpenFog node security and network layers? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_1" value="A"> A) Detection of physical intrusion or tampering.</li><li><input type="checkbox" name="question_1" value="B"> B) East-west traffic monitoring for anomaly detection.</li><li><input type="checkbox" name="question_1" value="C"> C) Direct IP connectivity to every sensor in the PAN.</li><li><input type="checkbox" name="question_1" value="D"> D) VPN termination between fog and cloud.</li><li><input type="checkbox" name="question_1" value="E"> E) Resilient routing through mesh reconfiguration.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, E</p>
+                <input type="hidden" name="correct_1" value="A, B, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>3: Which characteristics of industrial environments must be considered when designing IIoT deployments? [Tema 8Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_2" value="A"> A) Harsh environmental conditions (dust, temperature, vibrations).</li><li><input type="checkbox" name="question_2" value="B"> B) Long equipment life cycles and proprietary protocols.</li><li><input type="checkbox" name="question_2" value="C"> C) High tolerance for packet loss in control loops.</li><li><input type="checkbox" name="question_2" value="D"> D) Deterministic timing and low-latency requirements.</li><li><input type="checkbox" name="question_2" value="E"> E) Frequent hardware upgrades to support new standards.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, D</p>
+                <input type="hidden" name="correct_2" value="A, B, D">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>4: What distinguishes a sensor from an actuator in an IoT system? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_3" value="A"> A) A sensor emits digital stimuli; an actuator stores data.</li><li><input type="checkbox" name="question_3" value="B"> B) A sensor controls a physical process based on digital input; an actuator collects data.</li><li><input type="checkbox" name="question_3" value="C"> C) A sensor receives signals from the internet; an actuator transmits them.</li><li><input type="checkbox" name="question_3" value="D"> D) A sensor converts real-world phenomena to digital data; an actuator does the opposite.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: D</p>
+                <input type="hidden" name="correct_3" value="D">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>5: Which statements correctly describe the role of consumers in future smart energy ecosystems? [Tema 8Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_4" value="A"> A) Consumers can engage in microtransactions by selling electricity from EVs to the grid.</li><li><input type="checkbox" name="question_4" value="B"> B) Consumers passively receive electricity and have no influence on energy markets.</li><li><input type="checkbox" name="question_4" value="C"> C) Consumers may shift energy consumption behavior based on cost feedback.</li><li><input type="checkbox" name="question_4" value="D"> D) Smart meters allow consumers to access real-time data on their energy usage.</li><li><input type="checkbox" name="question_4" value="E"> E) All energy balancing happens at the municipal level; consumer decisions are irrelevant.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, C, D</p>
+                <input type="hidden" name="correct_4" value="A, C, D">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>6: A municipality plans to deploy an environmental monitoring system using BLE-connected air quality sensors and wants to offload pattern recognition and aggregation. Which fog node design is most suitable? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_5" value="A"> A) On-prem private cloud with static provisioning.</li><li><input type="checkbox" name="question_5" value="B"> B) Sensor-level processing with HTTP push.</li><li><input type="checkbox" name="question_5" value="C"> C) VM-based edge node requiring constant internet access for function deployment.</li><li><input type="checkbox" name="question_5" value="D"> D) Gateway-based fog node supporting BLE, protocol abstraction, and local inference.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: D</p>
+                <input type="hidden" name="correct_5" value="D">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>7: Which of the following challenges must IoT-cloud platforms address to ensure interoperability and effective integration? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_6" value="A"> A) Homogeneous reference units across all devices.</li><li><input type="checkbox" name="question_6" value="B"> B) Fixed data schemas enforced by IoT gateways.</li><li><input type="checkbox" name="question_6" value="C"> C) Data quality and timestamp inconsistencies.</li><li><input type="checkbox" name="question_6" value="D"> D) Presence of virtual and physical sensors.</li><li><input type="checkbox" name="question_6" value="E"> E) Semantically diverse data formats.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: C, D, E</p>
+                <input type="hidden" name="correct_6" value="C, D, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>8: What management tasks are commonly associated with cloud service delivery for IoT systems? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_7" value="A"> A) Capacity planning of cloud nodes and infrastructure.</li><li><input type="checkbox" name="question_7" value="B"> B) Patch and update management.</li><li><input type="checkbox" name="question_7" value="C"> C) Load balancing and multitenancy.</li><li><input type="checkbox" name="question_7" value="D"> D) Manual provisioning of virtual machines.</li><li><input type="checkbox" name="question_7" value="E"> E) Configuration of routing protocols for mobile networks.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, C</p>
+                <input type="hidden" name="correct_7" value="A, B, C">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>9: Which of the following correctly differentiate the industrial automation protocols discussed? [Tema 8Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_8" value="A"> A) EtherNet/IP uses CIP for both implicit and explicit messaging.</li><li><input type="checkbox" name="question_8" value="B"> B) Modbus/TCP uses connectionless communication for low-latency response.</li><li><input type="checkbox" name="question_8" value="C"> C) EtherNet/IP supports real-time messaging using UDP multicast.</li><li><input type="checkbox" name="question_8" value="D"> D) PROFINET is favored in North America due to Siemens’ dominance.</li><li><input type="checkbox" name="question_8" value="E"> E) PROFINET bypasses the IP stack for deterministic frame transmission.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, C, E</p>
+                <input type="hidden" name="correct_8" value="A, C, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>10: A factory needs to detect leaks of various organic solvents (ethanol, methanol, etc.). Which sensor characteristics or technologies are relevant? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_9" value="A"> A) Catalytic oxidation capability.</li><li><input type="checkbox" name="question_9" value="B"> B) Requirement for heating element.</li><li><input type="checkbox" name="question_9" value="C"> C) Use of infrared pyrometer for gas detection.</li><li><input type="checkbox" name="question_9" value="D"> D) ISFET with solvent-specific membrane.</li><li><input type="checkbox" name="question_9" value="E"> E) Pore-filtering for molecular selectivity.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, E</p>
+                <input type="hidden" name="correct_9" value="A, B, E">
+            </div>
+            
+            <input id="submitButton" type="submit" value="Enviar respuestas">
+        </form>
+        <p id="scoreDisplay"></p>
+    </body>
+    </html>
+    <script>
+function submitForm() {
+    var form = document.getElementById("testForm");
+    form.elements["submitButton"].disabled = true;
+
+    var correctGlobal = 0;
+    var incorrectGlobal = 0;
+    var unanswered = 0;
+    var totalScore = 0;
+
+    var questions = document.getElementsByClassName("singleChoice");
+
+    for (var question of questions) {
+        var score = singleChoice(question);
+        if (score === 1) {
+            correctGlobal++;
+            totalScore += score;
+        } else if (isNaN(score)) {
+            unanswered++;
+        } else {
+            incorrectGlobal++;
+            totalScore += score;
+        }
+    }
+
+    var questions = document.getElementsByClassName("multipleChoice");
+
+    for (var question of questions) {
+        var score = multipleChoice(question);
+        if (score === 1) {
+            correctGlobal++;
+            totalScore += score;
+        } else if (isNaN(score)) {
+            unanswered++;
+        } else {
+            incorrectGlobal++;
+            totalScore += score;
+        }
+    }
+
+    console.log("Score out of all questions: " + totalScore);
+    console.log("Correct: " + correctGlobal);
+    console.log("Incorrect: " + incorrectGlobal);
+    console.log("Unanswered: " + unanswered);
+
+    // We calculate the score out of 10
+    totalScore = ((totalScore / (correctGlobal + incorrectGlobal + unanswered)) * 10).toFixed(2);
+
+    console.log("Score out of 10: " + totalScore);
+
+    var scoreDisplay = document.getElementById("scoreDisplay");
+    scoreDisplay.innerHTML = "Preguntas acertadas: " + correctGlobal + "<br>Preguntas falladas: " + incorrectGlobal + "<br>Puntuación total: " + totalScore + "/10";
+
+    return false;
+}
+function singleChoice(question) {
+    var selectedInput = question.querySelector("input:checked");
+    var correctAnswer = question.querySelector(".correct-answer");
+    correctAnswer.style.display = "block";
+
+    // We only count the ones with radio buttons
+    var options = question.querySelectorAll("input[type=radio]");
+    var numOptions = options.length;
+
+    // Disable all radio buttons to prevent changing the answer
+    options.forEach(input => input.disabled = true);
+
+    if (selectedInput && selectedInput.value === correctAnswer.innerHTML.split(":")[1].trim()) {
+        correctAnswer.classList.add("correct");
+    } else {
+        correctAnswer.classList.add("incorrect");
+    }
+
+    // We log the number of the question and score
+
+    // If it is correct we return 1
+    if (selectedInput && selectedInput.value === correctAnswer.innerHTML.split(":")[1].trim()) {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: 1");
+        return 1;
+    } //If there is no answer we return NaN
+    else if (selectedInput === null) {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: NaN");
+        return NaN;
+    } //If it is incorrect we return the penalty for random guessing
+    else {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: -1/" + (numOptions - 1));
+        return -1/(numOptions - 1);
+    }
+}
+function multipleChoice(question) {
+    var selectedInputs = question.querySelectorAll("input:checked");
+
+    // Get the correct answer element
+    var correctAnswer = question.querySelector(".correct-answer");
+
+    // Extract the correct answers from the hidden input field
+    var correctAnswers = question.querySelector("input[name^='correct_']");
+    var correctAnswersArray = correctAnswers ? correctAnswers.value.split(",").map(x => x.trim()) : [];
+
+    // Display the correct answers
+    question.querySelectorAll(".correct-answer").forEach(x => x.style.display = "block");
+
+    // Get the total number of checkbox options
+    var options = question.querySelectorAll("input[type=checkbox]");
+    var numOptions = options.length;
+
+    // Disable all checkboxes to prevent changing the answer
+    options.forEach(input => input.disabled = true);
+
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
+
+    // Iterate over selected inputs to mark correct/incorrect answers
+    for (var selectedInput of selectedInputs) {
+        var listItem = selectedInput.closest("li"); // Get the <li> containing the checkbox
+
+        if (listItem) {
+            if (correctAnswersArray.includes(selectedInput.value)) {
+                // listItem.classList.add("correct"); // Apply class to the entire list item
+                correct++;
+            } else {
+                // listItem.classList.add("incorrect");
+                incorrect++;
+            }
+        }
+    }
+
+    // We log the number of the question and score
+
+    // If all the correct answers are selected and no incorrect answers are selected
+    // we return 1
+    if (correct === correctAnswersArray.length && incorrect === 0) {
+        correctAnswer.classList.add("correct");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: 1");
+        return 1;
+    } // If there are no answers we return NaN
+    else if (selectedInputs.length === 0) {
+        correctAnswer.classList.add("incorrect");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: NaN");
+        return NaN;
+    } // If there are incorrect answers we return the penalty for random guessing
+    else {
+        correctAnswer.classList.add("incorrect");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: -0.5");
+        return -0.5;
+    }
+
+}
+</script>

@@ -1,0 +1,352 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Examen</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+body {
+font-family: 'Roboto', Arial, sans-serif;
+background-color: #f9f9f9;
+color: #333;
+line-height: 1.6;
+margin: 0;
+padding: 20px;
+}
+.correct {
+    color: #28a745; /* A brighter green for better visibility */
+    font-weight: bold;
+}
+.incorrect {
+    color: #dc3545; /* A brighter red for better visibility */
+    font-weight: bold;
+}
+.question {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.question p {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.question li {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    list-style-type: none;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+.question li:hover {
+    background-color: #f1f1f1; /* Highlight on hover */
+}
+input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    transform: scale(1.35);
+    margin-right: 10px;
+    cursor: pointer;
+}
+.correct-answer {
+    display: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+.answered {
+    pointer-events: none;
+}
+#testForm {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#submitButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#submitButton:hover {
+    background-color: #0056b3;
+}
+#scoreDisplay {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}     
+        </style>
+    </head>
+    <body>
+        <form id="testForm" onsubmit="return submitForm()">
+    
+            <div class="multipleChoice question">
+                <p>1: Which are limitations of polling in embedded control logic? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_0" value="A"> A) CPU remains active during the entire polling cycle.</li><li><input type="checkbox" name="question_0" value="B"> B) Polling is only possible in RTOS-managed systems.</li><li><input type="checkbox" name="question_0" value="C"> C) Polling provides faster response than interrupts in all cases.</li><li><input type="checkbox" name="question_0" value="D"> D) Polling introduces unpredictable delays during high computation loads.</li><li><input type="checkbox" name="question_0" value="E"> E) It is difficult to guarantee real-time response with polling.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, D, E</p>
+                <input type="hidden" name="correct_0" value="A, D, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>2: Which method provides absolute pressure readings regardless of environment? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_1" value="A"> A) Gauge pressure sensor.</li><li><input type="checkbox" name="question_1" value="B"> B) Sealed gauge pressure sensor.</li><li><input type="checkbox" name="question_1" value="C"> C) Barometric sensor.</li><li><input type="checkbox" name="question_1" value="D"> D) Absolute pressure sensor.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: D</p>
+                <input type="hidden" name="correct_1" value="D">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>3: Which statements correctly describe the role of consumers in future smart energy ecosystems? [Tema 8Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_2" value="A"> A) Consumers can engage in microtransactions by selling electricity from EVs to the grid.</li><li><input type="checkbox" name="question_2" value="B"> B) Smart meters allow consumers to access real-time data on their energy usage.</li><li><input type="checkbox" name="question_2" value="C"> C) Consumers may shift energy consumption behavior based on cost feedback.</li><li><input type="checkbox" name="question_2" value="D"> D) Consumers passively receive electricity and have no influence on energy markets.</li><li><input type="checkbox" name="question_2" value="E"> E) All energy balancing happens at the municipal level; consumer decisions are irrelevant.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, C</p>
+                <input type="hidden" name="correct_2" value="A, B, C">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>4: A remote fog deployment in a critical infrastructure site must remain operational despite physical tampering or network disruption. Which architectural feature should be prioritized? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_3" value="A"> A) Peer-to-peer node monitoring and hardware-level security.</li><li><input type="checkbox" name="question_3" value="B"> B) Horizontal scalability via cloud bursting.</li><li><input type="checkbox" name="question_3" value="C"> C) RESTful API for image service control.</li><li><input type="checkbox" name="question_3" value="D"> D) Dynamic container orchestration from the cloud.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A</p>
+                <input type="hidden" name="correct_3" value="A">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>5: You need to design an IoT-controlled lock system for a storage cabinet. The system must allow opening on command and maintain its position without continuous power. Which of the following components are suitable or required? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_4" value="A"> A) A servo motor configured for angle locking.</li><li><input type="checkbox" name="question_4" value="B"> B) An electromechanical relay in SPDT mode.</li><li><input type="checkbox" name="question_4" value="C"> C) A stepper motor with holding torque.</li><li><input type="checkbox" name="question_4" value="D"> D) A piezoelectric vibration motor.</li><li><input type="checkbox" name="question_4" value="E"> E) A solenoid with a spring return.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, C, E</p>
+                <input type="hidden" name="correct_4" value="A, C, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>6: You’re designing a smart utility grid for a data center to minimize power consumption during peak hours. Which approach best reflects IR4 principles for this use case? [Tema 8Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_5" value="A"> A) Outsource energy management to third-party consultants.</li><li><input type="checkbox" name="question_5" value="B"> B) Use smart meters and thermostats connected to AI systems for dynamic load balancing.</li><li><input type="checkbox" name="question_5" value="C"> C) Send weekly reports to human analysts to adjust air conditioning usage.</li><li><input type="checkbox" name="question_5" value="D"> D) Schedule power shutdowns for non-essential servers manually.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B</p>
+                <input type="hidden" name="correct_5" value="B">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>7: In a smart factory, which element serves as the bridge between operational technology (OT) systems and IT analytics platforms? [Tema 8Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_6" value="A"> A) PLC.</li><li><input type="checkbox" name="question_6" value="B"> B) SCADA.</li><li><input type="checkbox" name="question_6" value="C"> C) Edge gateway.</li><li><input type="checkbox" name="question_6" value="D"> D) ERP.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: C</p>
+                <input type="hidden" name="correct_6" value="C">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>8: Which of the following statements about anomaly detection and clustering in IoT are correct? [Tema 6Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_7" value="A"> A) Hierarchical clustering groups items based on distance or similarity in features.</li><li><input type="checkbox" name="question_7" value="B"> B) Principal Component Analysis (PCA) reduces dimensionality to highlight variance.</li><li><input type="checkbox" name="question_7" value="C"> C) Clustering requires labeled data to work effectively.</li><li><input type="checkbox" name="question_7" value="D"> D) Clustering methods can support anomaly detection by flagging distant items.</li><li><input type="checkbox" name="question_7" value="E"> E) K-means clustering determines the number of clusters dynamically based on data.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, D</p>
+                <input type="hidden" name="correct_7" value="A, B, D">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>9: Why is Amazon EC2 considered a canonical example of IaaS in cloud computing? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_8" value="A"> A) It focuses only on database hosting and offloads all computation.</li><li><input type="checkbox" name="question_8" value="B"> B) It offers a closed system with proprietary APIs.</li><li><input type="checkbox" name="question_8" value="C"> C) It limits customization to promote interoperability across vendors.</li><li><input type="checkbox" name="question_8" value="D"> D) It provides on-demand virtual servers and elastic storage with minimal setup.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: D</p>
+                <input type="hidden" name="correct_8" value="D">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>10: Which challenge is most directly addressed by deploying Greengrass Lambda functions on edge devices in a fog architecture? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_9" value="A"> A) Enabling local processing and command execution even when offline.</li><li><input type="checkbox" name="question_9" value="B"> B) Enabling sensors to be discovered automatically through REST APIs.</li><li><input type="checkbox" name="question_9" value="C"> C) Synchronizing non-IP devices directly with HTTP services.</li><li><input type="checkbox" name="question_9" value="D"> D) Maintaining centralized control over all sensor activity.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A</p>
+                <input type="hidden" name="correct_9" value="A">
+            </div>
+            
+            <input id="submitButton" type="submit" value="Enviar respuestas">
+        </form>
+        <p id="scoreDisplay"></p>
+    </body>
+    </html>
+    <script>
+function submitForm() {
+    var form = document.getElementById("testForm");
+    form.elements["submitButton"].disabled = true;
+
+    var correctGlobal = 0;
+    var incorrectGlobal = 0;
+    var unanswered = 0;
+    var totalScore = 0;
+
+    var questions = document.getElementsByClassName("singleChoice");
+
+    for (var question of questions) {
+        var score = singleChoice(question);
+        if (score === 1) {
+            correctGlobal++;
+            totalScore += score;
+        } else if (isNaN(score)) {
+            unanswered++;
+        } else {
+            incorrectGlobal++;
+            totalScore += score;
+        }
+    }
+
+    var questions = document.getElementsByClassName("multipleChoice");
+
+    for (var question of questions) {
+        var score = multipleChoice(question);
+        if (score === 1) {
+            correctGlobal++;
+            totalScore += score;
+        } else if (isNaN(score)) {
+            unanswered++;
+        } else {
+            incorrectGlobal++;
+            totalScore += score;
+        }
+    }
+
+    console.log("Score out of all questions: " + totalScore);
+    console.log("Correct: " + correctGlobal);
+    console.log("Incorrect: " + incorrectGlobal);
+    console.log("Unanswered: " + unanswered);
+
+    // We calculate the score out of 10
+    totalScore = ((totalScore / (correctGlobal + incorrectGlobal + unanswered)) * 10).toFixed(2);
+
+    console.log("Score out of 10: " + totalScore);
+
+    var scoreDisplay = document.getElementById("scoreDisplay");
+    scoreDisplay.innerHTML = "Preguntas acertadas: " + correctGlobal + "<br>Preguntas falladas: " + incorrectGlobal + "<br>Puntuación total: " + totalScore + "/10";
+
+    return false;
+}
+function singleChoice(question) {
+    var selectedInput = question.querySelector("input:checked");
+    var correctAnswer = question.querySelector(".correct-answer");
+    correctAnswer.style.display = "block";
+
+    // We only count the ones with radio buttons
+    var options = question.querySelectorAll("input[type=radio]");
+    var numOptions = options.length;
+
+    // Disable all radio buttons to prevent changing the answer
+    options.forEach(input => input.disabled = true);
+
+    if (selectedInput && selectedInput.value === correctAnswer.innerHTML.split(":")[1].trim()) {
+        correctAnswer.classList.add("correct");
+    } else {
+        correctAnswer.classList.add("incorrect");
+    }
+
+    // We log the number of the question and score
+
+    // If it is correct we return 1
+    if (selectedInput && selectedInput.value === correctAnswer.innerHTML.split(":")[1].trim()) {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: 1");
+        return 1;
+    } //If there is no answer we return NaN
+    else if (selectedInput === null) {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: NaN");
+        return NaN;
+    } //If it is incorrect we return the penalty for random guessing
+    else {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: -1/" + (numOptions - 1));
+        return -1/(numOptions - 1);
+    }
+}
+function multipleChoice(question) {
+    var selectedInputs = question.querySelectorAll("input:checked");
+
+    // Get the correct answer element
+    var correctAnswer = question.querySelector(".correct-answer");
+
+    // Extract the correct answers from the hidden input field
+    var correctAnswers = question.querySelector("input[name^='correct_']");
+    var correctAnswersArray = correctAnswers ? correctAnswers.value.split(",").map(x => x.trim()) : [];
+
+    // Display the correct answers
+    question.querySelectorAll(".correct-answer").forEach(x => x.style.display = "block");
+
+    // Get the total number of checkbox options
+    var options = question.querySelectorAll("input[type=checkbox]");
+    var numOptions = options.length;
+
+    // Disable all checkboxes to prevent changing the answer
+    options.forEach(input => input.disabled = true);
+
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
+
+    // Iterate over selected inputs to mark correct/incorrect answers
+    for (var selectedInput of selectedInputs) {
+        var listItem = selectedInput.closest("li"); // Get the <li> containing the checkbox
+
+        if (listItem) {
+            if (correctAnswersArray.includes(selectedInput.value)) {
+                // listItem.classList.add("correct"); // Apply class to the entire list item
+                correct++;
+            } else {
+                // listItem.classList.add("incorrect");
+                incorrect++;
+            }
+        }
+    }
+
+    // We log the number of the question and score
+
+    // If all the correct answers are selected and no incorrect answers are selected
+    // we return 1
+    if (correct === correctAnswersArray.length && incorrect === 0) {
+        correctAnswer.classList.add("correct");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: 1");
+        return 1;
+    } // If there are no answers we return NaN
+    else if (selectedInputs.length === 0) {
+        correctAnswer.classList.add("incorrect");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: NaN");
+        return NaN;
+    } // If there are incorrect answers we return the penalty for random guessing
+    else {
+        correctAnswer.classList.add("incorrect");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: -0.5");
+        return -0.5;
+    }
+
+}
+</script>

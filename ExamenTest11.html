@@ -1,0 +1,352 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Examen</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+body {
+font-family: 'Roboto', Arial, sans-serif;
+background-color: #f9f9f9;
+color: #333;
+line-height: 1.6;
+margin: 0;
+padding: 20px;
+}
+.correct {
+    color: #28a745; /* A brighter green for better visibility */
+    font-weight: bold;
+}
+.incorrect {
+    color: #dc3545; /* A brighter red for better visibility */
+    font-weight: bold;
+}
+.question {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.question p {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.question li {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    list-style-type: none;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+.question li:hover {
+    background-color: #f1f1f1; /* Highlight on hover */
+}
+input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    transform: scale(1.35);
+    margin-right: 10px;
+    cursor: pointer;
+}
+.correct-answer {
+    display: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+.answered {
+    pointer-events: none;
+}
+#testForm {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#submitButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#submitButton:hover {
+    background-color: #0056b3;
+}
+#scoreDisplay {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}     
+        </style>
+    </head>
+    <body>
+        <form id="testForm" onsubmit="return submitForm()">
+    
+            <div class="multipleChoice question">
+                <p>1: Which of the following statements best explains the relationship between MapReduce and fog computing? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_0" value="A"> A) MapReduce’s shuffle phase is replaced by MQTT brokers in fog systems.</li><li><input type="checkbox" name="question_0" value="B"> B) Fog computing applies MapReduce principles to localize processing and reduce data transfer overhead.</li><li><input type="checkbox" name="question_0" value="C"> C) Fog computing only supports the reduce phase of MapReduce to simplify architecture.</li><li><input type="checkbox" name="question_0" value="D"> D) Fog nodes use HDFS to cache raw sensor data for map operations.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B</p>
+                <input type="hidden" name="correct_0" value="B">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>2: A company deploys a cold-chain monitoring system across warehouses. It needs local fault detection, real-time response, and centralized oversight. Which architecture is most suitable? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_1" value="A"> A) Peer-to-peer sensor mesh with direct inter-node decision making.</li><li><input type="checkbox" name="question_1" value="B"> B) Fog nodes managing local control and aggregation, coordinated by a parent cloud.</li><li><input type="checkbox" name="question_1" value="C"> C) Edge-only nodes directly uploading all sensor data to the cloud.</li><li><input type="checkbox" name="question_1" value="D"> D) Centralized cloud-only model with periodic polling.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B</p>
+                <input type="hidden" name="correct_1" value="B">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>3: What management tasks are commonly associated with cloud service delivery for IoT systems? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_2" value="A"> A) Load balancing and multitenancy.</li><li><input type="checkbox" name="question_2" value="B"> B) Capacity planning of cloud nodes and infrastructure.</li><li><input type="checkbox" name="question_2" value="C"> C) Manual provisioning of virtual machines.</li><li><input type="checkbox" name="question_2" value="D"> D) Configuration of routing protocols for mobile networks.</li><li><input type="checkbox" name="question_2" value="E"> E) Patch and update management.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, E</p>
+                <input type="hidden" name="correct_2" value="A, B, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>4: Which of the following sensors are active? [Tema 5Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_3" value="A"> A) Soil moisture sensor.</li><li><input type="checkbox" name="question_3" value="B"> B) PIR sensor.</li><li><input type="checkbox" name="question_3" value="C"> C) Radar.</li><li><input type="checkbox" name="question_3" value="D"> D) Camera with flash.</li><li><input type="checkbox" name="question_3" value="E"> E) Thermistor.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: C, D</p>
+                <input type="hidden" name="correct_3" value="C, D">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>5: Which statements accurately reflect trade-offs between relational and NoSQL databases in IoT contexts? [Tema 6Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_4" value="A"> A) Relational databases allow JOINs which reduce redundancy.</li><li><input type="checkbox" name="question_4" value="B"> B) NoSQL systems prioritize availability over consistency.</li><li><input type="checkbox" name="question_4" value="C"> C) Time-series databases are a type of relational database optimized for temporal queries.</li><li><input type="checkbox" name="question_4" value="D"> D) NoSQL databases typically require data partitioning across machines for scalability.</li><li><input type="checkbox" name="question_4" value="E"> E) NoSQL databases provide better ACID compliance.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, D</p>
+                <input type="hidden" name="correct_4" value="A, B, D">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>6: You are designing an autonomous environmental monitoring system deployed in a remote region. Data should be processed and stored locally due to connectivity constraints. Which architectural and design choices are appropriate? [Tema 6Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_5" value="A"> A) Perform local querying and only transmit alerts or aggregated summaries.</li><li><input type="checkbox" name="question_5" value="B"> B) Use edge computing to combine sensing and processing.</li><li><input type="checkbox" name="question_5" value="C"> C) Push all raw data to a central server for compliance logging.</li><li><input type="checkbox" name="question_5" value="D"> D) Apply fusion techniques to reduce redundant data transmission.</li><li><input type="checkbox" name="question_5" value="E"> E) Store data in an in-memory NoSQL database on the edge.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, D, E</p>
+                <input type="hidden" name="correct_5" value="A, B, D, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>7: In the context of Industry 4.0, which technologies are most directly integrated to enable autonomous industrial decision-making systems? [Tema 8Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_6" value="A"> A) Edge AI processors.</li><li><input type="checkbox" name="question_6" value="B"> B) Smart sensors.</li><li><input type="checkbox" name="question_6" value="C"> C) Quantum computing cores.</li><li><input type="checkbox" name="question_6" value="D"> D) Fog computing nodes.</li><li><input type="checkbox" name="question_6" value="E"> E) Deep learning neural networks.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A, B, D, E</p>
+                <input type="hidden" name="correct_6" value="A, B, D, E">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>8: A company is deploying IoT sensors in trucks to monitor engine temperature and geolocation in real time. Alerts must be issued if overheating is detected outside of predefined geofences. What architectural component is most critical for supporting such functionality? [Tema 6Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_7" value="A"> A) Rules engine with location-aware logic.</li><li><input type="checkbox" name="question_7" value="B"> B) Kalman filter.</li><li><input type="checkbox" name="question_7" value="C"> C) SQL-based relational backend.</li><li><input type="checkbox" name="question_7" value="D"> D) Bloom filter.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A</p>
+                <input type="hidden" name="correct_7" value="A">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>9: In OpenStack, which component is responsible for launching and managing multiple cloud applications using templates that resemble AWS CloudFormation? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_8" value="A"> A) Heat</li><li><input type="checkbox" name="question_8" value="B"> B) Keystone</li><li><input type="checkbox" name="question_8" value="C"> C) Glance</li><li><input type="checkbox" name="question_8" value="D"> D) Ceilometer</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: A</p>
+                <input type="hidden" name="correct_8" value="A">
+            </div>
+            
+            <div class="multipleChoice question">
+                <p>10: An IoT start-up needs rapid development, scalability, minimal investment, and real-time analytics. Which cloud platforms or models fit? [Tema 7Teacher]</p>  <!-- Mostrar el número de pregunta -->
+                
+                <ul>
+                    <li><input type="checkbox" name="question_9" value="A"> A) On-premise private cloud with manual scaling.</li><li><input type="checkbox" name="question_9" value="B"> B) PaaS model like Microsoft Azure IoT.</li><li><input type="checkbox" name="question_9" value="C"> C) Amazon AWS IoT with integrated rules engine and SDKs.</li><li><input type="checkbox" name="question_9" value="D"> D) SaaS solution tailored to general medical record keeping.</li><li><input type="checkbox" name="question_9" value="E"> E) Open-source platform like OpenIoT supporting semantic data models.</li>
+                </ul>
+                <p class="correct-answer">Respuestas correctas: B, C, E</p>
+                <input type="hidden" name="correct_9" value="B, C, E">
+            </div>
+            
+            <input id="submitButton" type="submit" value="Enviar respuestas">
+        </form>
+        <p id="scoreDisplay"></p>
+    </body>
+    </html>
+    <script>
+function submitForm() {
+    var form = document.getElementById("testForm");
+    form.elements["submitButton"].disabled = true;
+
+    var correctGlobal = 0;
+    var incorrectGlobal = 0;
+    var unanswered = 0;
+    var totalScore = 0;
+
+    var questions = document.getElementsByClassName("singleChoice");
+
+    for (var question of questions) {
+        var score = singleChoice(question);
+        if (score === 1) {
+            correctGlobal++;
+            totalScore += score;
+        } else if (isNaN(score)) {
+            unanswered++;
+        } else {
+            incorrectGlobal++;
+            totalScore += score;
+        }
+    }
+
+    var questions = document.getElementsByClassName("multipleChoice");
+
+    for (var question of questions) {
+        var score = multipleChoice(question);
+        if (score === 1) {
+            correctGlobal++;
+            totalScore += score;
+        } else if (isNaN(score)) {
+            unanswered++;
+        } else {
+            incorrectGlobal++;
+            totalScore += score;
+        }
+    }
+
+    console.log("Score out of all questions: " + totalScore);
+    console.log("Correct: " + correctGlobal);
+    console.log("Incorrect: " + incorrectGlobal);
+    console.log("Unanswered: " + unanswered);
+
+    // We calculate the score out of 10
+    totalScore = ((totalScore / (correctGlobal + incorrectGlobal + unanswered)) * 10).toFixed(2);
+
+    console.log("Score out of 10: " + totalScore);
+
+    var scoreDisplay = document.getElementById("scoreDisplay");
+    scoreDisplay.innerHTML = "Preguntas acertadas: " + correctGlobal + "<br>Preguntas falladas: " + incorrectGlobal + "<br>Puntuación total: " + totalScore + "/10";
+
+    return false;
+}
+function singleChoice(question) {
+    var selectedInput = question.querySelector("input:checked");
+    var correctAnswer = question.querySelector(".correct-answer");
+    correctAnswer.style.display = "block";
+
+    // We only count the ones with radio buttons
+    var options = question.querySelectorAll("input[type=radio]");
+    var numOptions = options.length;
+
+    // Disable all radio buttons to prevent changing the answer
+    options.forEach(input => input.disabled = true);
+
+    if (selectedInput && selectedInput.value === correctAnswer.innerHTML.split(":")[1].trim()) {
+        correctAnswer.classList.add("correct");
+    } else {
+        correctAnswer.classList.add("incorrect");
+    }
+
+    // We log the number of the question and score
+
+    // If it is correct we return 1
+    if (selectedInput && selectedInput.value === correctAnswer.innerHTML.split(":")[1].trim()) {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: 1");
+        return 1;
+    } //If there is no answer we return NaN
+    else if (selectedInput === null) {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: NaN");
+        return NaN;
+    } //If it is incorrect we return the penalty for random guessing
+    else {
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: -1/" + (numOptions - 1));
+        return -1/(numOptions - 1);
+    }
+}
+function multipleChoice(question) {
+    var selectedInputs = question.querySelectorAll("input:checked");
+
+    // Get the correct answer element
+    var correctAnswer = question.querySelector(".correct-answer");
+
+    // Extract the correct answers from the hidden input field
+    var correctAnswers = question.querySelector("input[name^='correct_']");
+    var correctAnswersArray = correctAnswers ? correctAnswers.value.split(",").map(x => x.trim()) : [];
+
+    // Display the correct answers
+    question.querySelectorAll(".correct-answer").forEach(x => x.style.display = "block");
+
+    // Get the total number of checkbox options
+    var options = question.querySelectorAll("input[type=checkbox]");
+    var numOptions = options.length;
+
+    // Disable all checkboxes to prevent changing the answer
+    options.forEach(input => input.disabled = true);
+
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
+
+    // Iterate over selected inputs to mark correct/incorrect answers
+    for (var selectedInput of selectedInputs) {
+        var listItem = selectedInput.closest("li"); // Get the <li> containing the checkbox
+
+        if (listItem) {
+            if (correctAnswersArray.includes(selectedInput.value)) {
+                // listItem.classList.add("correct"); // Apply class to the entire list item
+                correct++;
+            } else {
+                // listItem.classList.add("incorrect");
+                incorrect++;
+            }
+        }
+    }
+
+    // We log the number of the question and score
+
+    // If all the correct answers are selected and no incorrect answers are selected
+    // we return 1
+    if (correct === correctAnswersArray.length && incorrect === 0) {
+        correctAnswer.classList.add("correct");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: 1");
+        return 1;
+    } // If there are no answers we return NaN
+    else if (selectedInputs.length === 0) {
+        correctAnswer.classList.add("incorrect");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: NaN");
+        return NaN;
+    } // If there are incorrect answers we return the penalty for random guessing
+    else {
+        correctAnswer.classList.add("incorrect");
+        console.log(question.querySelector("p").innerHTML.split(":")[0] + " - Score: -0.5");
+        return -0.5;
+    }
+
+}
+</script>
