@@ -2,37 +2,71 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <title>My GitHub Pages</title>
+    <meta charset="UTF-8">
+    <title>My GitHub Pages</title>
 </head>
+
 <body>
-  <h1>My GitHub Pages</h1>
-  <ul id="pages-list">Loading...</ul>
+    <h1>My GitHub Pages</h1>
+    <ul id="pages-list">Loading...</ul>
 
-  <script>
-    const currentUrl = window.location.href;
-      const urlParts = new URL(currentUrl);
+    <script>
+        const currentUrl = window.location.href;
+        const urlParts = new URL(currentUrl);
 
-    const username = urlParts.hostname.split(".")[0];
-    const pagesList = document.getElementById('pages-list');
+        const username = urlParts.hostname.split(".")[0];
+        const pagesList = document.getElementById('pages-list');
 
-    fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
-      .then(response => response.json())
-      .then(repos => {
-        pagesList.innerHTML = '';
-        repos.forEach(repo => {
-          if (repo.name !== `${username}.github.io`) {
-            const pagesUrl = `https://${username}.github.io/${repo.name}/`;
-            const li = document.createElement('li');
-            li.innerHTML = `<a href="${pagesUrl}" target="_blank">${repo.name}</a>`;
-            pagesList.appendChild(li);
-          }
-        });
-      })
-      .catch(error => {
-        pagesList.innerHTML = 'Failed to load repositories.';
-        console.error(error);
-      });
-  </script>
+        // Function to check if GitHub Pages is enabled for a repository
+        async function checkGitHubPages(username, repoName, repo) {
+            try {
+                // Method 1: Check if GitHub Pages is enabled via the API
+                const pagesResponse = await fetch(`https://api.github.com/repos/${username}/${repoName}/pages`);
+
+                if (pagesResponse.status === 200) {
+                    const pagesData = await pagesResponse.json();
+                    // GitHub Pages is enabled, return the URL
+                    return {
+                        repo: repo,
+                        pagesUrl: pagesData.html_url || `https://${username}.github.io/${repoName}/`
+                    };
+                }
+                return null; // GitHub Pages not enabled
+            } catch (error) {
+                console.warn(`Failed to check GitHub Pages for ${repoName}:`, error);
+                return null;
+            }
+        }
+
+
+        fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+            .then(response => response.json())
+            .then(repos => {
+                pagesList.innerHTML = '';
+                const repoChecks = repos
+                    .filter(repo => repo.name !== `${username}.github.io`)
+                    .map(repo => checkGitHubPages(username, repo.name, repo));
+
+                Promise.allSettled(repoChecks).then(results => {
+                    results.forEach(result => {
+                        if (result.status === 'fulfilled' && result.value) {
+                            const { repo, pagesUrl } = result.value;
+                            const li = document.createElement('li');
+                            li.innerHTML = `<a href="${pagesUrl}" target="_blank">${repo.name}</a>`;
+                            pagesList.appendChild(li);
+                        }
+                    });
+
+                    if (pagesList.children.length === 0) {
+                        pagesList.innerHTML = '<li>No GitHub Pages sites found.</li>';
+                    }
+                });
+            })
+            .catch(error => {
+                pagesList.innerHTML = 'Failed to load repositories.';
+                console.error(error);
+            });
+    </script>
 </body>
+
 </html>
