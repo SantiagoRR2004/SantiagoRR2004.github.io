@@ -2,129 +2,37 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Tests de PIC</title>
-    <style>
-        .intro-container {
-            max-width: 800px;
-            margin: 40px auto;
-            text-align: center;
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>My GitHub Pages</title>
 </head>
-
 <body>
+  <h1>My GitHub Pages</h1>
+  <ul id="pages-list">Loading...</ul>
 
-    <div class="intro-container">
-        Estos son tests de PIC con las preguntas del profesor que entran en el segundo examen. Todos los tests tienen 10
-        preguntas y han sido creados de manera aleatoria así que se pueden repetir preguntas entre ellos.
-    </div>
+  <script>
+    const currentUrl = window.location.href;
+      const urlParts = new URL(currentUrl);
 
-    <div style="text-align: center;">
-        <div><a href="ExamenTest1.html">Examen 1</a></div>
-        <div><a href="ExamenTest2.html">Examen 2</a></div>
-        <div><a href="ExamenTest3.html">Examen 3</a></div>
-        <div><a href="ExamenTest4.html">Examen 4</a></div>
-        <div><a href="ExamenTest5.html">Examen 5</a></div>
-        <div><a href="ExamenTest6.html">Examen 6</a></div>
-        <div><a href="ExamenTest7.html">Examen 7</a></div>
-        <div><a href="ExamenTest8.html">Examen 8</a></div>
-        <div><a href="ExamenTest9.html">Examen 9</a></div>
-        <div><a href="ExamenTest10.html">Examen 10</a></div>
-        <div><a href="ExamenTest11.html">Examen 11</a></div>
-        <div><a href="ExamenTest12.html">Examen 12</a></div>
-        <div><a href="ExamenTest13.html">Examen 13</a></div>
-        <div><a href="ExamenTest14.html">Examen 14</a></div>
-        <div><a href="ExamenTest15.html">Examen 15</a></div>
-        <div><a href="ExamenTest16.html">Examen 16</a></div>
-        <div><a href="ExamenTest17.html">Examen 17</a></div>
-        <div><a href="ExamenTest18.html">Examen 18</a></div>
-        <div><a href="ExamenTest19.html">Examen 19</a></div>
-        <div><a href="ExamenTest20.html">Examen 20</a></div>
-        <div><a href="ExamenTest21.html">Examen 21</a></div>
-        <div><a href="ExamenTest22.html">Examen 22</a></div>
-        <div><a href="ExamenTest23.html">Examen 23</a></div>
-        <div><a href="ExamenTest24.html">Examen 24</a></div>
-        <div><a href="ExamenTest25.html">Examen 25</a></div>
-        <div><a href="ExamenTest26.html">Examen 26</a></div>
-        <div><a href="ExamenTest27.html">Examen 27</a></div>
-        <div><a href="ExamenTest28.html">Examen 28</a></div>
-        <div><a href="ExamenTest29.html">Examen 29</a></div>
-        <div><a href="ExamenTest30.html">Examen 30</a></div>
-        <div><a href="ExamenTest31.html">Examen 31</a></div>
-        <div><a href="ExamenTest32.html">Examen 32</a></div>
-        <div><a href="ExamenTest33.html">Examen 33</a></div>
-        <div><a href="ExamenTest34.html">Examen 34</a></div>
-        <div><a href="ExamenTest35.html">Examen 35</a></div>
-        <div><a href="ExamenTest36.html">Examen 36</a></div>
-        <div><a href="ExamenTest37.html">Examen 37</a></div>
-        <div><a href="ExamenTest38.html">Examen 38</a></div>
-        <div><a href="ExamenTest39.html">Examen 39</a></div>
-        <div><a href="ExamenTest40.html">Examen 40</a></div>
-        <div><a href="ExamenTest41.html">Examen 41</a></div>
-        <div><a href="ExamenTest42.html">Examen 42</a></div>
-        <div><a href="ExamenTest43.html">Examen 43</a></div>
-        <div><a href="ExamenTest44.html">Examen 44</a></div>
-        <div><a href="ExamenTest45.html">Examen 45</a></div>
-        <div><a href="ExamenTest46.html">Examen 46</a></div>
-        <div><a href="ExamenTest47.html">Examen 47</a></div>
-        <div><a href="ExamenTest48.html">Examen 48</a></div>
-        <div><a href="ExamenTest49.html">Examen 49</a></div>
-        <div><a href="ExamenTest50.html">Examen 50</a></div>
-        <div><a href="ExamenTest51.html">Examen 51</a></div>
-        <div><a href="ExamenTest52.html">Examen 52</a></div>
-        <div><a href="ExamenTest53.html">Examen 53</a></div>
-        <div><a href="ExamenTest54.html">Examen 54</a></div>
-        <div><a href="ExamenTest55.html">Examen 55</a></div>
-        <div><a href="ExamenTest56.html">Examen 56</a></div>
-        <div><a href="ExamenTest57.html">Examen 57</a></div>
-        <div><a href="ExamenTest58.html">Examen 58</a></div>
-        <div><a href="ExamenTest59.html">Examen 59</a></div>
-        <div><a href="ExamenTest60.html">Examen 60</a></div>
-        <div><a href="ExamenTest61.html">Examen 61</a></div>
-        <div><a href="ExamenTest62.html">Examen 62</a></div>
-        <div><a href="ExamenTest63.html">Examen 63</a></div>
-        <div><a href="ExamenTest64.html">Examen 64</a></div>
-        <div><a href="ExamenTest65.html">Examen 65</a></div>
-        <div><a href="ExamenTest66.html">Examen 66</a></div>
-        <div><a href="ExamenTest67.html">Examen 67</a></div>
-        <div><a href="ExamenTest68.html">Examen 68</a></div>
-        <div><a href="ExamenTest69.html">Examen 69</a></div>
-        <div><a href="ExamenTest70.html">Examen 70</a></div>
-        <div><a href="ExamenTest71.html">Examen 71</a></div>
-        <div><a href="ExamenTest72.html">Examen 72</a></div>
-        <div><a href="ExamenTest73.html">Examen 73</a></div>
-        <div><a href="ExamenTest74.html">Examen 74</a></div>
-        <div><a href="ExamenTest75.html">Examen 75</a></div>
-        <div><a href="ExamenTest76.html">Examen 76</a></div>
-        <div><a href="ExamenTest77.html">Examen 77</a></div>
-        <div><a href="ExamenTest78.html">Examen 78</a></div>
-        <div><a href="ExamenTest79.html">Examen 79</a></div>
-        <div><a href="ExamenTest80.html">Examen 80</a></div>
-        <div><a href="ExamenTest81.html">Examen 81</a></div>
-        <div><a href="ExamenTest82.html">Examen 82</a></div>
-        <div><a href="ExamenTest83.html">Examen 83</a></div>
-        <div><a href="ExamenTest84.html">Examen 84</a></div>
-        <div><a href="ExamenTest85.html">Examen 85</a></div>
-        <div><a href="ExamenTest86.html">Examen 86</a></div>
-        <div><a href="ExamenTest87.html">Examen 87</a></div>
-        <div><a href="ExamenTest88.html">Examen 88</a></div>
-        <div><a href="ExamenTest89.html">Examen 89</a></div>
-        <div><a href="ExamenTest90.html">Examen 90</a></div>
-        <div><a href="ExamenTest91.html">Examen 91</a></div>
-        <div><a href="ExamenTest92.html">Examen 92</a></div>
-        <div><a href="ExamenTest93.html">Examen 93</a></div>
-        <div><a href="ExamenTest94.html">Examen 94</a></div>
-        <div><a href="ExamenTest95.html">Examen 95</a></div>
-        <div><a href="ExamenTest96.html">Examen 96</a></div>
-        <div><a href="ExamenTest97.html">Examen 97</a></div>
-        <div><a href="ExamenTest98.html">Examen 98</a></div>
-        <div><a href="ExamenTest99.html">Examen 99</a></div>
-        <div><a href="ExamenTest100.html">Examen 100</a></div>                
-    </div>
+    const username = urlParts.hostname.split(".")[0];
+    const pagesList = document.getElementById('pages-list');
 
+    fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+      .then(response => response.json())
+      .then(repos => {
+        pagesList.innerHTML = '';
+        repos.forEach(repo => {
+          if (repo.name !== `${username}.github.io`) {
+            const pagesUrl = `https://${username}.github.io/${repo.name}/`;
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="${pagesUrl}" target="_blank">${repo.name}</a>`;
+            pagesList.appendChild(li);
+          }
+        });
+      })
+      .catch(error => {
+        pagesList.innerHTML = 'Failed to load repositories.';
+        console.error(error);
+      });
+  </script>
 </body>
-
 </html>
