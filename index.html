@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -17,48 +17,26 @@
         const username = urlParts.hostname.split(".")[0];
         const pagesList = document.getElementById('pages-list');
 
-        // Function to check if GitHub Pages is enabled for a repository
-        async function checkGitHubPages(username, repoName, repo) {
-            try {
-                // Method 1: Check if GitHub Pages is enabled via the API
-                const pagesResponse = await fetch(`https://api.github.com/repos/${username}/${repoName}/pages`);
-
-                if (pagesResponse.status === 200) {
-                    const pagesData = await pagesResponse.json();
-                    // GitHub Pages is enabled, return the URL
-                    return {
-                        repo: repo,
-                        pagesUrl: pagesData.html_url || `https://${username}.github.io/${repoName}/`
-                    };
-                }
-                return null; // GitHub Pages not enabled
-            } catch (error) {
-                console.warn(`Failed to check GitHub Pages for ${repoName}:`, error);
-                return null;
-            }
-        }
-
-
         fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
             .then(response => response.json())
             .then(repos => {
                 pagesList.innerHTML = '';
-                const repoChecks = repos
-                    .filter(repo => repo.name !== `${username}.github.io`)
-                    .map(repo => checkGitHubPages(username, repo.name, repo));
+                repos.forEach(repo => {
+                    if (repo.name !== `${username}.github.io`) {
+                        const pagesUrl = `https://${username}.github.io/${repo.name}/`;
 
-                Promise.allSettled(repoChecks).then(results => {
-                    results.forEach(result => {
-                        if (result.status === 'fulfilled' && result.value) {
-                            const { repo, pagesUrl } = result.value;
-                            const li = document.createElement('li');
-                            li.innerHTML = `<a href="${pagesUrl}" target="_blank">${repo.name}</a>`;
-                            pagesList.appendChild(li);
-                        }
-                    });
-
-                    if (pagesList.children.length === 0) {
-                        pagesList.innerHTML = '<li>No GitHub Pages sites found.</li>';
+                        // Check if the GitHub Pages URL exists
+                        fetch(pagesUrl, { method: 'HEAD' })  // Use HEAD to check without downloading full content
+                            .then(res => {
+                                if (res.ok) {  // not a 404
+                                    const li = document.createElement('li');
+                                    li.innerHTML = `<a href="${pagesUrl}" target="_blank">${repo.name}</a>`;
+                                    pagesList.appendChild(li);
+                                }
+                            })
+                            .catch(err => {
+                                console.warn(`Could not check ${pagesUrl}`, err);
+                            });
                     }
                 });
             })
