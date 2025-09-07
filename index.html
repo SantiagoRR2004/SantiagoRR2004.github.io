@@ -22,7 +22,7 @@
             .then(repos => {
                 pagesList.innerHTML = '';
                 repos.forEach(repo => {
-                    if (repo.name !== `${username}.github.io`) {
+                    if (repo.name.toLowerCase() !== `${username}.github.io`.toLowerCase()) {
                         const pagesUrl = `https://${username}.github.io/${repo.name}/`;
 
                         // Check if the GitHub Pages URL exists
