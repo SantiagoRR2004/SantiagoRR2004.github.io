@@ -13,6 +13,7 @@ fetch(
     // Create table head
     const thead = document.createElement("thead");
     const headerRow = document.createElement("tr");
+    headerRow.style.fontWeight = "bold";
 
     // Author column
     const authorHeader = document.createElement("th");
@@ -238,6 +239,144 @@ fetch(
 
       tbody.appendChild(row);
     });
+
+    // Create totals row
+    const totalsRow = document.createElement("tr");
+    totalsRow.style.fontWeight = "bold";
+
+    // Calculate totals
+    let totalStars = 0;
+    let totalForks = 0;
+    let totalContributors = 0;
+    let totalUserCommits = 0;
+    let totalCommits = 0;
+    let totalCommitPercentage = 0;
+    let totalUserIssues = 0;
+    let totalIssues = 0;
+    let totalIssuePercentage = 0;
+    let totalUserPRs = 0;
+    let totalPRs = 0;
+    let totalPRPercentage = 0;
+
+    Object.keys(customRepos).forEach((repoUrl) => {
+      totalStars += customRepos[repoUrl]["stars"];
+      totalForks += customRepos[repoUrl]["forks"];
+      totalContributors += customRepos[repoUrl]["contributors"];
+      totalUserCommits += customRepos[repoUrl]["userCommits"];
+      totalCommits += customRepos[repoUrl]["commits"];
+      totalCommitPercentage +=
+        (customRepos[repoUrl]["userCommits"] /
+          customRepos[repoUrl]["commits"]) *
+          100 || 0;
+      totalUserIssues += customRepos[repoUrl]["userIssues"];
+      totalIssues += customRepos[repoUrl]["issues"];
+      totalIssuePercentage +=
+        (customRepos[repoUrl]["userIssues"] / customRepos[repoUrl]["issues"]) *
+          100 || 0;
+      totalUserPRs += customRepos[repoUrl]["userPullRequests"];
+      totalPRs += customRepos[repoUrl]["pullRequests"];
+      totalPRPercentage +=
+        (customRepos[repoUrl]["userPullRequests"] /
+          customRepos[repoUrl]["pullRequests"]) *
+          100 || 0;
+    });
+
+    // Average the percentages
+    totalCommitPercentage /= Object.keys(customRepos).length;
+    totalIssuePercentage /= Object.keys(customRepos).length;
+    totalPRPercentage /= Object.keys(customRepos).length;
+
+    // Author cell - empty
+    const totalAuthorCell = document.createElement("td");
+    totalAuthorCell.textContent = "";
+    totalsRow.appendChild(totalAuthorCell);
+
+    // Repository cell - empty
+    const totalRepoCell = document.createElement("td");
+    totalRepoCell.textContent = "";
+    totalsRow.appendChild(totalRepoCell);
+
+    // Stars total
+    const totalStarsCell = document.createElement("td");
+    totalStarsCell.style.textAlign = "center";
+    totalStarsCell.textContent = totalStars;
+    totalsRow.appendChild(totalStarsCell);
+
+    // Forks total
+    const totalForksCell = document.createElement("td");
+    totalForksCell.style.textAlign = "center";
+    totalForksCell.textContent = totalForks;
+    totalsRow.appendChild(totalForksCell);
+
+    // Contributors total
+    const totalContributorsCell = document.createElement("td");
+    totalContributorsCell.style.textAlign = "center";
+    totalContributorsCell.textContent = totalContributors;
+    totalsRow.appendChild(totalContributorsCell);
+
+    // User Commits total
+    const totalUserCommitsCell = document.createElement("td");
+    totalUserCommitsCell.style.textAlign = "center";
+    totalUserCommitsCell.textContent = totalUserCommits;
+    totalsRow.appendChild(totalUserCommitsCell);
+
+    // Total Commits
+    const totalCommitsCell = document.createElement("td");
+    totalCommitsCell.style.textAlign = "center";
+    totalCommitsCell.textContent = totalCommits;
+    totalsRow.appendChild(totalCommitsCell);
+
+    // Commit Percentage
+    const totalCommitPercentageCell = document.createElement("td");
+    totalCommitPercentageCell.style.textAlign = "center";
+    totalCommitPercentageCell.textContent =
+      totalCommitPercentage.toFixed(2) + "%";
+    totalsRow.appendChild(totalCommitPercentageCell);
+
+    // Language cell - empty
+    const totalLanguageCell = document.createElement("td");
+    totalLanguageCell.style.textAlign = "center";
+    totalLanguageCell.textContent = "";
+    totalsRow.appendChild(totalLanguageCell);
+
+    // User Issues total
+    const totalUserIssuesCell = document.createElement("td");
+    totalUserIssuesCell.style.textAlign = "center";
+    totalUserIssuesCell.textContent = totalUserIssues;
+    totalsRow.appendChild(totalUserIssuesCell);
+
+    // Total Issues
+    const totalIssuesCell = document.createElement("td");
+    totalIssuesCell.style.textAlign = "center";
+    totalIssuesCell.textContent = totalIssues;
+    totalsRow.appendChild(totalIssuesCell);
+
+    // Issue Percentage
+    const totalIssuePercentageCell = document.createElement("td");
+    totalIssuePercentageCell.style.textAlign = "center";
+    totalIssuePercentageCell.textContent =
+      totalIssuePercentage.toFixed(2) + "%";
+    totalsRow.appendChild(totalIssuePercentageCell);
+
+    // User PRs total
+    const totalUserPRsCell = document.createElement("td");
+    totalUserPRsCell.style.textAlign = "center";
+    totalUserPRsCell.textContent = totalUserPRs;
+    totalsRow.appendChild(totalUserPRsCell);
+
+    // Total PRs
+    const totalPRsCell = document.createElement("td");
+    totalPRsCell.style.textAlign = "center";
+    totalPRsCell.textContent = totalPRs;
+    totalsRow.appendChild(totalPRsCell);
+
+    // PR Percentage
+    const totalPRPercentageCell = document.createElement("td");
+    totalPRPercentageCell.style.textAlign = "center";
+    totalPRPercentageCell.textContent = totalPRPercentage.toFixed(2) + "%";
+    totalsRow.appendChild(totalPRPercentageCell);
+
+    tbody.appendChild(totalsRow);
 
     repoTable.appendChild(tbody);
   })
