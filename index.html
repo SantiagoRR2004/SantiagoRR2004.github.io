@@ -3,105 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My GitHub Pages</title>
+    <title></title>
 </head>
 
 <body>
-    <h1>My GitHub Pages</h1>
-    <ul id="pages-list">Loading...</ul>
+    <h1 id="mainTitle"></h1>
+    <h2>GitHub Pages</h2>
+    <ul id="pagesList"></ul>
+    <h2>Repositories</h2>
+    <table id="repositoriesTable"></table>
 
-    <script>
-        const currentUrl = window.location.href;
-        const urlParts = new URL(currentUrl);
-
-        const username = urlParts.hostname.split(".")[0];
-        const pagesList = document.getElementById('pages-list');
-
-        fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
-            .then(response => response.json())
-            .then(repos => {
-                pagesList.innerHTML = '';
-                repos.forEach(repo => {
-                    if (repo.name.toLowerCase() !== `${username}.github.io`.toLowerCase()) {
-                        const pagesUrl = `https://${username}.github.io/${repo.name}/`;
-
-                        // Check if the GitHub Pages URL exists
-                        fetch(pagesUrl, { method: 'HEAD' })  // Use HEAD to check without downloading full content
-                            .then(res => {
-                                if (res.ok) {  // not a 404
-                                    const li = document.createElement('li');
-                                    li.innerHTML = `<a href="${pagesUrl}" target="_blank">${repo.name}</a>`;
-                                    pagesList.appendChild(li);
-                                }
-                            })
-                            .catch(err => {
-                                console.warn(`Could not check ${pagesUrl}`, err);
-                            });
-                    }
-                });
-            })
-            .catch(error => {
-                pagesList.innerHTML = 'Failed to load repositories.';
-                console.error(error);
-            });
-
-        fetch(`https://raw.githubusercontent.com/${username}/${username}/main/repositories.json`)
-            .then(response => response.json())
-            .then(customRepos => {
-                // Create table
-                const table = document.createElement('table');
-                table.style.borderCollapse = 'collapse';
-                table.style.margin = '0 auto';
-
-                // Create table head
-                const thead = document.createElement('thead');
-                const headerRow = document.createElement('tr');
-
-                // Repository column
-                const repoHeader = document.createElement('th');
-                repoHeader.style.textAlign = 'center';
-                repoHeader.textContent = 'Repository';
-                headerRow.appendChild(repoHeader);
-
-                // Commits column
-                const commitsHeader = document.createElement('th');
-                commitsHeader.style.textAlign = 'center';
-                commitsHeader.textContent = 'Commits';
-                headerRow.appendChild(commitsHeader);
-
-                thead.appendChild(headerRow);
-                table.appendChild(thead);
-
-                // Create body
-                const tbody = document.createElement('tbody');
-
-                Object.keys(customRepos).forEach(repoUrl => {
-                    const row = document.createElement('tr');
-
-                    const cellName = document.createElement('td');
-                    cellName.style.textAlign = 'left';
-
-                    // Get repo name from URL
-                    const repoName = repoUrl.split('/').pop();
-                    cellName.innerHTML = `<a href="${repoUrl}" target="_blank">${repoName}</a>`;
-                    row.appendChild(cellName);
-
-                    // Commits cell
-                    const cellCommits = document.createElement('td');
-                    cellCommits.style.textAlign = 'center';
-                    cellCommits.textContent = customRepos[repoUrl]["userCommits"];
-                    row.appendChild(cellCommits);
-
-                    tbody.appendChild(row);
-                });
-
-                table.appendChild(tbody);
-                document.body.appendChild(table);
-            })
-            .catch(error => {
-                console.warn('No custom repositories.json found or failed to load it.', error);
-            });
-    </script>
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/githubPages.js" defer></script>
+    <script src="scripts/repositories.js" defer></script>
 </body>
 
 </html>
