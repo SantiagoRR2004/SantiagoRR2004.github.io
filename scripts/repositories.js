@@ -9,6 +9,7 @@ fetch(
     repoTable.innerHTML = "";
     repoTable.style.borderCollapse = "collapse";
     repoTable.style.margin = "0 auto";
+    repoTable.style.width = "100%";
 
     // Create table head
     const thead = document.createElement("thead");
@@ -155,7 +156,7 @@ fetch(
       // Contributors cell
       const cellContributors = document.createElement("td");
       cellContributors.style.textAlign = "center";
-      cellContributors.textContent = customRepos[repoUrl]["contributors"];
+      cellContributors.textContent = Object.keys(customRepos[repoUrl].contributors).length;
       row.appendChild(cellContributors);
 
       // Commits cell
@@ -261,7 +262,7 @@ fetch(
     Object.keys(customRepos).forEach((repoUrl) => {
       totalStars += customRepos[repoUrl]["stars"];
       totalForks += customRepos[repoUrl]["forks"];
-      totalContributors += customRepos[repoUrl]["contributors"];
+      totalContributors += Object.keys(customRepos[repoUrl].contributors).length;
       totalUserCommits += customRepos[repoUrl]["userCommits"];
       totalCommits += customRepos[repoUrl]["commits"];
       totalCommitPercentage +=
