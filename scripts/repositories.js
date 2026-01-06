@@ -156,7 +156,9 @@ fetch(
       // Contributors cell
       const cellContributors = document.createElement("td");
       cellContributors.style.textAlign = "center";
-      cellContributors.textContent = Object.keys(customRepos[repoUrl].contributors).length;
+      cellContributors.textContent = Object.keys(
+        customRepos[repoUrl].contributors
+      ).length;
       row.appendChild(cellContributors);
 
       // Commits cell
@@ -241,7 +243,11 @@ fetch(
       tbody.appendChild(row);
     });
 
+    // Add the body to the table
+    repoTable.appendChild(tbody);
+
     // Create totals row
+    const tfoot = document.createElement("tfoot");
     const totalsRow = document.createElement("tr");
     totalsRow.style.fontWeight = "bold";
 
@@ -262,7 +268,9 @@ fetch(
     Object.keys(customRepos).forEach((repoUrl) => {
       totalStars += customRepos[repoUrl]["stars"];
       totalForks += customRepos[repoUrl]["forks"];
-      totalContributors += Object.keys(customRepos[repoUrl].contributors).length;
+      totalContributors += Object.keys(
+        customRepos[repoUrl].contributors
+      ).length;
       totalUserCommits += customRepos[repoUrl]["userCommits"];
       totalCommits += customRepos[repoUrl]["commits"];
       totalCommitPercentage +=
@@ -377,9 +385,8 @@ fetch(
     totalPRPercentageCell.textContent = totalPRPercentage.toFixed(2) + "%";
     totalsRow.appendChild(totalPRPercentageCell);
 
-    tbody.appendChild(totalsRow);
-
-    repoTable.appendChild(tbody);
+    tfoot.appendChild(totalsRow);
+    repoTable.appendChild(tfoot);
   })
   .catch((error) => {
     console.warn(
