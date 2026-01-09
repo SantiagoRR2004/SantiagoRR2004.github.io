@@ -32,30 +32,35 @@ fetch(
     const starsHeader = document.createElement("th");
     starsHeader.style.textAlign = "center";
     starsHeader.textContent = "Stars";
+    starsHeader.footerAggregator = sum;
     headerRow.appendChild(starsHeader);
 
     // Forks column
     const forksHeader = document.createElement("th");
     forksHeader.style.textAlign = "center";
     forksHeader.textContent = "Forks";
+    forksHeader.footerAggregator = sum;
     headerRow.appendChild(forksHeader);
 
     // Contributors column
     const contributorsHeader = document.createElement("th");
     contributorsHeader.style.textAlign = "center";
     contributorsHeader.textContent = "Contributors";
+    contributorsHeader.footerAggregator = sum;
     headerRow.appendChild(contributorsHeader);
 
     // Commits column
     const commitsHeader = document.createElement("th");
     commitsHeader.style.textAlign = "center";
     commitsHeader.textContent = "Commits";
+    commitsHeader.footerAggregator = sum;
     headerRow.appendChild(commitsHeader);
 
     // Total commits column
     const totalCommitsHeader = document.createElement("th");
     totalCommitsHeader.style.textAlign = "center";
     totalCommitsHeader.textContent = "Total Commits";
+    totalCommitsHeader.footerAggregator = sum;
     headerRow.appendChild(totalCommitsHeader);
 
     // Commit Percentage column
@@ -63,6 +68,7 @@ fetch(
     commitPercentageHeader.style.textAlign = "center";
     commitPercentageHeader.textContent = "Commit Percentage";
     commitPercentageHeader.formatter = formatPercentage;
+    commitPercentageHeader.footerAggregator = average;
     headerRow.appendChild(commitPercentageHeader);
 
     // Language column
@@ -75,12 +81,14 @@ fetch(
     const issuesHeader = document.createElement("th");
     issuesHeader.style.textAlign = "center";
     issuesHeader.textContent = "Issues";
+    issuesHeader.footerAggregator = sum;
     headerRow.appendChild(issuesHeader);
 
     // Total Issues column
     const totalIssuesHeader = document.createElement("th");
     totalIssuesHeader.style.textAlign = "center";
     totalIssuesHeader.textContent = "Total Issues";
+    totalIssuesHeader.footerAggregator = sum;
     headerRow.appendChild(totalIssuesHeader);
 
     // Issue Percentage column
@@ -88,18 +96,21 @@ fetch(
     issuePercentageHeader.style.textAlign = "center";
     issuePercentageHeader.textContent = "Issue Percentage";
     issuePercentageHeader.formatter = formatPercentage;
+    issuePercentageHeader.footerAggregator = average;
     headerRow.appendChild(issuePercentageHeader);
 
     // Pull Requests column
     const prHeader = document.createElement("th");
     prHeader.style.textAlign = "center";
     prHeader.textContent = "Pull Requests";
+    prHeader.footerAggregator = sum;
     headerRow.appendChild(prHeader);
 
     // Total PRs column
     const totalPrHeader = document.createElement("th");
     totalPrHeader.style.textAlign = "center";
     totalPrHeader.textContent = "Total PRs";
+    totalPrHeader.footerAggregator = sum;
     headerRow.appendChild(totalPrHeader);
 
     // PR Percentage column
@@ -107,6 +118,7 @@ fetch(
     prPercentageHeader.style.textAlign = "center";
     prPercentageHeader.textContent = "PR Percentage";
     prPercentageHeader.formatter = formatPercentage;
+    prPercentageHeader.footerAggregator = average;
     headerRow.appendChild(prPercentageHeader);
 
     thead.appendChild(headerRow);

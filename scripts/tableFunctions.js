@@ -109,3 +109,29 @@ document.addEventListener("click", (event) => {
   header.dataset.sort = ascending ? "asc" : "desc";
   rows.forEach((row) => tbody.appendChild(row));
 });
+
+function average(numbers) {
+  const validNumbers = numbers
+    .map((num) => parseFloat(num))
+    .filter((num) => !isNaN(num));
+
+  let total = 0;
+  validNumbers.forEach((num) => {
+    total += num;
+  });
+
+  return total / validNumbers.length || 0;
+}
+
+function sum(numbers) {
+  const validNumbers = numbers
+    .map((num) => parseFloat(num))
+    .filter((num) => !isNaN(num));
+
+  let total = 0;
+  validNumbers.forEach((num) => {
+    total += num;
+  });
+
+  return total;
+}
