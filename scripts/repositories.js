@@ -62,6 +62,7 @@ fetch(
     const commitPercentageHeader = document.createElement("th");
     commitPercentageHeader.style.textAlign = "center";
     commitPercentageHeader.textContent = "Commit Percentage";
+    commitPercentageHeader.formatter = formatPercentage;
     headerRow.appendChild(commitPercentageHeader);
 
     // Language column
@@ -86,6 +87,7 @@ fetch(
     const issuePercentageHeader = document.createElement("th");
     issuePercentageHeader.style.textAlign = "center";
     issuePercentageHeader.textContent = "Issue Percentage";
+    issuePercentageHeader.formatter = formatPercentage;
     headerRow.appendChild(issuePercentageHeader);
 
     // Pull Requests column
@@ -104,6 +106,7 @@ fetch(
     const prPercentageHeader = document.createElement("th");
     prPercentageHeader.style.textAlign = "center";
     prPercentageHeader.textContent = "PR Percentage";
+    prPercentageHeader.formatter = formatPercentage;
     headerRow.appendChild(prPercentageHeader);
 
     thead.appendChild(headerRow);
@@ -177,10 +180,11 @@ fetch(
       const cellCommitPercentage = document.createElement("td");
       cellCommitPercentage.style.textAlign = "center";
       const percentage =
-        (customRepos[repoUrl]["userCommits"] /
-          customRepos[repoUrl]["commits"]) *
-          100 || 0;
-      cellCommitPercentage.textContent = percentage.toFixed(2) + "%";
+        customRepos[repoUrl]["userCommits"] / customRepos[repoUrl]["commits"] ||
+        0;
+      cellCommitPercentage.dataset.originalValue = percentage;
+      cellCommitPercentage.textContent =
+        commitPercentageHeader.formatter(percentage);
       row.appendChild(cellCommitPercentage);
 
       // Language cell
@@ -213,9 +217,11 @@ fetch(
       const cellIssuePercentage = document.createElement("td");
       cellIssuePercentage.style.textAlign = "center";
       const issuePercentage =
-        (customRepos[repoUrl]["userIssues"] / customRepos[repoUrl]["issues"]) *
-          100 || 0;
-      cellIssuePercentage.textContent = issuePercentage.toFixed(2) + "%";
+        customRepos[repoUrl]["userIssues"] / customRepos[repoUrl]["issues"] ||
+        0;
+      cellIssuePercentage.dataset.originalValue = issuePercentage;
+      cellIssuePercentage.textContent =
+        issuePercentageHeader.formatter(issuePercentage);
       row.appendChild(cellIssuePercentage);
 
       // Pull Requests cell
@@ -234,10 +240,10 @@ fetch(
       const cellPRPercentage = document.createElement("td");
       cellPRPercentage.style.textAlign = "center";
       const prPercentage =
-        (customRepos[repoUrl]["userPullRequests"] /
-          customRepos[repoUrl]["pullRequests"]) *
-          100 || 0;
-      cellPRPercentage.textContent = prPercentage.toFixed(2) + "%";
+        customRepos[repoUrl]["userPullRequests"] /
+          customRepos[repoUrl]["pullRequests"] || 0;
+      cellPRPercentage.dataset.originalValue = prPercentage;
+      cellPRPercentage.textContent = prPercentageHeader.formatter(prPercentage);
       row.appendChild(cellPRPercentage);
 
       tbody.appendChild(row);
