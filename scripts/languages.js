@@ -30,8 +30,19 @@ fetch(
     bytesHeader.footerAggregator = sum;
     headerRow.appendChild(bytesHeader);
 
+    // Percentage column
+    const percentageHeader = document.createElement("th");
+    percentageHeader.style.textAlign = "center";
+    percentageHeader.textContent = "Percentage";
+    percentageHeader.formatter = formatPercentage;
+    percentageHeader.footerAggregator = sum;
+    headerRow.appendChild(percentageHeader);
+
     thead.appendChild(headerRow);
     languagesTable.appendChild(thead);
+
+    // All the files
+    let totalBytes = 0;
 
     // Calculate total bytes for each language
     let languageSize = {};
@@ -43,6 +54,7 @@ fetch(
             languageSize[lang] = 0;
           }
           languageSize[lang] += languages[lang];
+          totalBytes += languages[lang];
         });
       }
     });
@@ -76,6 +88,14 @@ fetch(
       cellBytes.dataset.originalValue = languageSize[lang];
       cellBytes.textContent = bytesHeader.formatter(languageSize[lang]);
       row.appendChild(cellBytes);
+
+      // Percentage cell
+      const cellPercentage = document.createElement("td");
+      cellPercentage.style.textAlign = "center";
+      const percentageValue = languageSize[lang] / totalBytes;
+      cellPercentage.dataset.originalValue = percentageValue;
+      cellPercentage.textContent = percentageHeader.formatter(percentageValue);
+      row.appendChild(cellPercentage);
 
       tbody.appendChild(row);
     });

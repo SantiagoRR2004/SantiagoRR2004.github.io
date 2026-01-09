@@ -77,6 +77,14 @@ fetch(
     languageHeader.textContent = "Language";
     headerRow.appendChild(languageHeader);
 
+    // Size column
+    const sizeHeader = document.createElement("th");
+    sizeHeader.style.textAlign = "center";
+    sizeHeader.textContent = "Size";
+    sizeHeader.formatter = formatBytes;
+    sizeHeader.footerAggregator = sum;
+    headerRow.appendChild(sizeHeader);
+
     // Issues column
     const issuesHeader = document.createElement("th");
     issuesHeader.style.textAlign = "center";
@@ -217,6 +225,19 @@ fetch(
         cellLanguage.textContent = "";
       }
       row.appendChild(cellLanguage);
+
+      // Size cell
+      const cellSize = document.createElement("td");
+      cellSize.style.textAlign = "center";
+      let totalSize = 0;
+      for (const size of Object.values(
+        customRepos[repoUrl]["languages"] || {}
+      )) {
+        totalSize += size;
+      }
+      cellSize.dataset.originalValue = totalSize;
+      cellSize.textContent = sizeHeader.formatter(totalSize);
+      row.appendChild(cellSize);
 
       // Issues cell
       const cellIssues = document.createElement("td");

@@ -93,17 +93,33 @@ document.addEventListener("click", (event) => {
   const ascending = header.dataset.sort !== "asc";
 
   rows.sort((a, b) => {
-    const aText = a.cells[columnIndex].textContent.trim();
-    const bText = b.cells[columnIndex].textContent.trim();
+    const aCell = a.cells[columnIndex];
+    const bCell = b.cells[columnIndex];
 
-    const aNum = parseFloat(aText);
-    const bNum = parseFloat(bText);
+    // Use originalValue when possible
+    const aRaw =
+      aCell && aCell.dataset && aCell.dataset.originalValue !== undefined
+        ? aCell.dataset.originalValue
+        : aCell
+        ? aCell.textContent.trim()
+        : "";
+    const bRaw =
+      bCell && bCell.dataset && bCell.dataset.originalValue !== undefined
+        ? bCell.dataset.originalValue
+        : bCell
+        ? bCell.textContent.trim()
+        : "";
+
+    const aNum = parseFloat(aRaw);
+    const bNum = parseFloat(bRaw);
 
     if (!isNaN(aNum) && !isNaN(bNum)) {
       return ascending ? aNum - bNum : bNum - aNum;
     }
 
-    return ascending ? aText.localeCompare(bText) : bText.localeCompare(aText);
+    return ascending
+      ? aRaw.localeCompare(bRaw, undefined, { numeric: true, sensitivity: "base" })
+      : bRaw.localeCompare(aRaw, undefined, { numeric: true, sensitivity: "base" });
   });
 
   header.dataset.sort = ascending ? "asc" : "desc";
