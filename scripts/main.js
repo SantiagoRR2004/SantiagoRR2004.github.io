@@ -8,3 +8,28 @@ document.title = `${username}`;
 document.getElementById("mainTitle").textContent = `${username}`;
 document.getElementById("mainTitle").style.textAlign = "center";
 document.getElementById("mainTitle").style.margin = "0 auto";
+
+let languagesColors = {};
+
+fetch(
+  `https://raw.githubusercontent.com/github-linguist/linguist/refs/heads/main/lib/linguist/languages.yml`
+)
+  .then((response) => response.text())
+  .then((yamlText) => {
+    const languagesData = jsyaml.load(yamlText);
+
+    // Fill in the languagesColors dictionary
+    for (const [languageName, languageInfo] of Object.entries(languagesData)) {
+      if (languageInfo && languageInfo.color) {
+        languagesColors[languageName] = languageInfo.color;
+      }
+    }
+  })
+  .catch((error) => {
+    console.warn(
+      "No custom repositories.json found or failed to load it.",
+      error
+    );
+  });
+
+

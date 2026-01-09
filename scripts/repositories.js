@@ -208,6 +208,11 @@ fetch(
           languages[a] > languages[b] ? a : b
         );
         cellLanguage.textContent = primaryLanguage;
+        // Change background if color is known
+        if (languagesColors[primaryLanguage]) {
+          cellLanguage.style.backgroundColor =
+            languagesColors[primaryLanguage];
+        }
       } else {
         cellLanguage.textContent = "";
       }

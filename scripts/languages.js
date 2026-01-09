@@ -58,6 +58,12 @@ fetch(
     Object.keys(languageSize).forEach((lang) => {
       const row = document.createElement("tr");
 
+      // Change background if color is known
+      if (languagesColors[lang]) {
+        // Opacity to 50%
+        row.style.backgroundColor = languagesColors[lang] + "80";
+      }
+
       // Language cell
       const cellLanguage = document.createElement("td");
       cellLanguage.style.textAlign = "center";
