@@ -6,7 +6,6 @@ appReady.then(() => {
   collaboratorsTable.style.borderCollapse = "collapse";
   collaboratorsTable.style.margin = "0 auto";
   collaboratorsTable.style.width = "100%";
-  // collaboratorsTable.style.borderRadius = "50%";
 
   let collaborators = {};
 
@@ -20,6 +19,7 @@ appReady.then(() => {
       nContributors += 1;
     }
 
+    // Calculate the bytes per contributor for this repository
     let totalBytes = 0;
     Object.keys(repoData["languages"]).forEach((lang) => {
       totalBytes += repoData["languages"][lang];
@@ -91,6 +91,26 @@ appReady.then(() => {
     const row = document.createElement("tr");
     const profileUrl = `https://github.com/` + collabData["username"];
     const profileImageUrl = `https://avatars.githubusercontent.com/u/${collabID}`;
+
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = profileImageUrl;
+
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+
+      // Draw the image with opacity
+      ctx.globalAlpha = 0.1; // 10% opacity
+      ctx.drawImage(img, 0, 0);
+
+      // Set the canvas as a repeating background
+      row.style.backgroundImage = `url('${canvas.toDataURL()}')`;
+      row.style.backgroundRepeat = "repeat";
+      row.style.backgroundSize = "contain";
+    };
 
     // Profile Picture cell
     const cellProfile = document.createElement("td");
