@@ -21,8 +21,10 @@ appReady.then(() => {
 
     // Calculate the bytes per contributor for this repository
     let totalBytes = 0;
+    let languages = {};
     Object.keys(repoData["languages"]).forEach((lang) => {
-      totalBytes += repoData["languages"][lang];
+      totalBytes += repoData["languages"][lang] / nContributors || 0;
+      languages[lang] = repoData["languages"][lang] / nContributors || 0;
     });
 
     Object.keys(repoData["contributors"]).forEach((contributorID) => {
@@ -31,10 +33,19 @@ appReady.then(() => {
           ncolab: 0,
           username: repoData["contributors"][contributorID],
           bytes: 0,
+          langs: {},
         };
       }
       collaborators[contributorID]["ncolab"] += 1;
-      collaborators[contributorID]["bytes"] += totalBytes / nContributors || 0;
+      collaborators[contributorID]["bytes"] += totalBytes;
+
+      // Accumulate language bytes
+      Object.keys(languages).forEach((lang) => {
+        if (!collaborators[contributorID]["langs"][lang]) {
+          collaborators[contributorID]["langs"][lang] = 0;
+        }
+        collaborators[contributorID]["langs"][lang] += languages[lang];
+      });
     });
   });
 
@@ -45,8 +56,6 @@ appReady.then(() => {
     }
     return b[1].ncolab - a[1].ncolab;
   });
-
-  console.log(sortedCollaborators);
 
   // Create table head
   const thead = document.createElement("thead");
@@ -71,6 +80,12 @@ appReady.then(() => {
   nColabHeader.textContent = "Collaborations";
   nColabHeader.footerAggregator = sum;
   headerRow.appendChild(nColabHeader);
+
+  // Language column
+  const langHeader = document.createElement("th");
+  langHeader.style.textAlign = "center";
+  langHeader.textContent = "Language";
+  headerRow.appendChild(langHeader);
 
   // Bytes column
   const bytesHeader = document.createElement("th");
@@ -145,6 +160,23 @@ appReady.then(() => {
     cellNColab.dataset.originalValue = collabData["ncolab"];
     cellNColab.textContent = collabData["ncolab"];
     row.appendChild(cellNColab);
+
+    // Language cell
+    const cellLang = document.createElement("td");
+    cellLang.style.textAlign = "center";
+    const languages = collabData["langs"];
+    if (languages && Object.keys(languages).length > 0) {
+      const sortedLangs = Object.entries(languages).sort((a, b) => b[1] - a[1]);
+      const primaryLanguage = sortedLangs[0][0];
+      cellLang.textContent = primaryLanguage;
+      if (languagesColors[primaryLanguage]) {
+        cellLang.style.backgroundColor = languagesColors[primaryLanguage];
+      }
+    } else {
+      cellLang.textContent = "";
+    }
+
+    row.appendChild(cellLang);
 
     // Bytes cell
     const cellBytes = document.createElement("td");
