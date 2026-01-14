@@ -8,12 +8,6 @@ async function init() {
 
   username = urlParts.hostname.split(".")[0];
 
-  // Change the title of the head and page to include the username
-  document.title = `${username}`;
-  document.getElementById("mainTitle").textContent = `${username}`;
-  document.getElementById("mainTitle").style.textAlign = "center";
-  document.getElementById("mainTitle").style.margin = "0 auto";
-
   const languagesPromise = fetch(
     `https://raw.githubusercontent.com/github-linguist/linguist/refs/heads/main/lib/linguist/languages.yml`
   )
@@ -63,7 +57,30 @@ async function init() {
       );
     });
 
-  await Promise.all([languagesPromise, reposPromise]);
+  // Fetch the user's profile data to set the favicon
+  const faviconPromise = fetch(`https://api.github.com/users/${username}`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data && data.avatar_url) {
+        const link =
+          document.querySelector("link[rel~='icon']") ||
+          document.createElement("link");
+        link.rel = "icon";
+        link.href = data.avatar_url;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+    })
+    .catch((error) => {
+      console.warn("Failed to fetch user profile data.", error);
+    });
+
+  await Promise.all([languagesPromise, reposPromise, faviconPromise]);
+
+  // Change the title of the head and page to include the username
+  document.title = `${username}`;
+  document.getElementById("mainTitle").textContent = `${username}`;
+  document.getElementById("mainTitle").style.textAlign = "center";
+  document.getElementById("mainTitle").style.margin = "0 auto";
 }
 
 appReady = init();
