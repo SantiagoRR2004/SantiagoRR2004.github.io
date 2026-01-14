@@ -44,6 +44,17 @@ async function init() {
     .then((response) => response.json())
     .then((data) => {
       customRepos = data;
+
+      // Try to find the properly capitalized username
+      Object.keys(customRepos).forEach((repoUrl) => {
+        const url = new URL(repoUrl);
+        const repoOwner = url.pathname.split("/")[1];
+        if (repoOwner.toLowerCase() === username.toLowerCase()) {
+          username = repoOwner;
+          // Exit the loop
+          return;
+        }
+      });
     })
     .catch((error) => {
       console.warn(
