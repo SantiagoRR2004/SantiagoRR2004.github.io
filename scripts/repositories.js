@@ -28,6 +28,7 @@ appReady.then(() => {
   const starsHeader = document.createElement("th");
   starsHeader.style.textAlign = "center";
   starsHeader.textContent = "Stars";
+  starsHeader.formatter = normalFormatter;
   starsHeader.footerAggregator = sum;
   headerRow.appendChild(starsHeader);
 
@@ -35,6 +36,7 @@ appReady.then(() => {
   const forksHeader = document.createElement("th");
   forksHeader.style.textAlign = "center";
   forksHeader.textContent = "Forks";
+  forksHeader.formatter = normalFormatter;
   forksHeader.footerAggregator = sum;
   headerRow.appendChild(forksHeader);
 
@@ -42,6 +44,7 @@ appReady.then(() => {
   const contributorsHeader = document.createElement("th");
   contributorsHeader.style.textAlign = "center";
   contributorsHeader.textContent = "Contributors";
+  contributorsHeader.formatter = normalFormatter;
   contributorsHeader.footerAggregator = sum;
   headerRow.appendChild(contributorsHeader);
 
@@ -49,6 +52,7 @@ appReady.then(() => {
   const commitsHeader = document.createElement("th");
   commitsHeader.style.textAlign = "center";
   commitsHeader.textContent = "Commits";
+  commitsHeader.formatter = normalFormatter;
   commitsHeader.footerAggregator = sum;
   headerRow.appendChild(commitsHeader);
 
@@ -56,6 +60,7 @@ appReady.then(() => {
   const totalCommitsHeader = document.createElement("th");
   totalCommitsHeader.style.textAlign = "center";
   totalCommitsHeader.textContent = "Total Commits";
+  totalCommitsHeader.formatter = normalFormatter;
   totalCommitsHeader.footerAggregator = sum;
   headerRow.appendChild(totalCommitsHeader);
 
@@ -85,6 +90,7 @@ appReady.then(() => {
   const issuesHeader = document.createElement("th");
   issuesHeader.style.textAlign = "center";
   issuesHeader.textContent = "Issues";
+  issuesHeader.formatter = normalFormatter;
   issuesHeader.footerAggregator = sum;
   headerRow.appendChild(issuesHeader);
 
@@ -92,6 +98,7 @@ appReady.then(() => {
   const totalIssuesHeader = document.createElement("th");
   totalIssuesHeader.style.textAlign = "center";
   totalIssuesHeader.textContent = "Total Issues";
+  totalIssuesHeader.formatter = normalFormatter;
   totalIssuesHeader.footerAggregator = sum;
   headerRow.appendChild(totalIssuesHeader);
 
@@ -107,6 +114,7 @@ appReady.then(() => {
   const prHeader = document.createElement("th");
   prHeader.style.textAlign = "center";
   prHeader.textContent = "Pull Requests";
+  prHeader.formatter = normalFormatter;
   prHeader.footerAggregator = sum;
   headerRow.appendChild(prHeader);
 
@@ -114,6 +122,7 @@ appReady.then(() => {
   const totalPrHeader = document.createElement("th");
   totalPrHeader.style.textAlign = "center";
   totalPrHeader.textContent = "Total PRs";
+  totalPrHeader.formatter = normalFormatter;
   totalPrHeader.footerAggregator = sum;
   headerRow.appendChild(totalPrHeader);
 
@@ -163,33 +172,45 @@ appReady.then(() => {
     // Stars cell
     const cellStars = document.createElement("td");
     cellStars.style.textAlign = "center";
-    cellStars.textContent = customRepos[repoUrl]["stars"];
+    cellStars.dataset.originalValue = customRepos[repoUrl]["stars"];
+    cellStars.textContent = starsHeader.formatter(
+      customRepos[repoUrl]["stars"]
+    );
     row.appendChild(cellStars);
 
     // Forks cell
     const cellForks = document.createElement("td");
     cellForks.style.textAlign = "center";
-    cellForks.textContent = customRepos[repoUrl]["forks"];
+    cellForks.dataset.originalValue = customRepos[repoUrl]["forks"];
+    cellForks.textContent = forksHeader.formatter(
+      customRepos[repoUrl]["forks"]
+    );
     row.appendChild(cellForks);
 
     // Contributors cell
     const cellContributors = document.createElement("td");
     cellContributors.style.textAlign = "center";
-    cellContributors.textContent = Object.keys(
-      customRepos[repoUrl].contributors
-    ).length;
+    const nContributors = Object.keys(customRepos[repoUrl].contributors).length;
+    cellContributors.dataset.originalValue = nContributors;
+    cellContributors.textContent = contributorsHeader.formatter(nContributors);
     row.appendChild(cellContributors);
 
     // Commits cell
     const cellCommits = document.createElement("td");
     cellCommits.style.textAlign = "center";
-    cellCommits.textContent = customRepos[repoUrl]["userCommits"];
+    cellCommits.dataset.originalValue = customRepos[repoUrl]["userCommits"];
+    cellCommits.textContent = commitsHeader.formatter(
+      customRepos[repoUrl]["userCommits"]
+    );
     row.appendChild(cellCommits);
 
     // Total commits cell
     const cellTotalCommits = document.createElement("td");
     cellTotalCommits.style.textAlign = "center";
-    cellTotalCommits.textContent = customRepos[repoUrl]["commits"];
+    cellTotalCommits.dataset.originalValue = customRepos[repoUrl]["commits"];
+    cellTotalCommits.textContent = totalCommitsHeader.formatter(
+      customRepos[repoUrl]["commits"]
+    );
     row.appendChild(cellTotalCommits);
 
     // Commit Percentage cell
@@ -235,13 +256,19 @@ appReady.then(() => {
     // Issues cell
     const cellIssues = document.createElement("td");
     cellIssues.style.textAlign = "center";
-    cellIssues.textContent = customRepos[repoUrl]["userIssues"];
+    cellIssues.dataset.originalValue = customRepos[repoUrl]["userIssues"];
+    cellIssues.textContent = issuesHeader.formatter(
+      customRepos[repoUrl]["userIssues"]
+    );
     row.appendChild(cellIssues);
 
     // Total Issues cell
     const cellTotalIssues = document.createElement("td");
     cellTotalIssues.style.textAlign = "center";
-    cellTotalIssues.textContent = customRepos[repoUrl]["issues"];
+    cellTotalIssues.dataset.originalValue = customRepos[repoUrl]["issues"];
+    cellTotalIssues.textContent = totalIssuesHeader.formatter(
+      customRepos[repoUrl]["issues"]
+    );
     row.appendChild(cellTotalIssues);
 
     // Issue Percentage cell
@@ -257,13 +284,19 @@ appReady.then(() => {
     // Pull Requests cell
     const cellPRs = document.createElement("td");
     cellPRs.style.textAlign = "center";
-    cellPRs.textContent = customRepos[repoUrl]["userPullRequests"];
+    cellPRs.dataset.originalValue = customRepos[repoUrl]["userPullRequests"];
+    cellPRs.textContent = totalPrHeader.formatter(
+      customRepos[repoUrl]["userPullRequests"]
+    );
     row.appendChild(cellPRs);
 
     // Total PRs cell
     const cellTotalPRs = document.createElement("td");
     cellTotalPRs.style.textAlign = "center";
-    cellTotalPRs.textContent = customRepos[repoUrl]["pullRequests"];
+    cellTotalPRs.dataset.originalValue = customRepos[repoUrl]["pullRequests"];
+    cellTotalPRs.textContent = totalPrHeader.formatter(
+      customRepos[repoUrl]["pullRequests"]
+    );
     row.appendChild(cellTotalPRs);
 
     // PR Percentage cell
