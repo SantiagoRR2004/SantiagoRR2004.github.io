@@ -54,7 +54,10 @@ function addFooterToTables() {
           );
           // Default to average
           if (allNumeric) {
-            cell.textContent = average(columnValues).toFixed(2);
+            const averageValue = average(columnValues);
+            if (averageValue !== "") {
+              cell.textContent = averageValue.toFixed(2);
+            }
           }
         }
 
