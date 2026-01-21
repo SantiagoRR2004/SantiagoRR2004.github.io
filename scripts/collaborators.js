@@ -27,6 +27,14 @@ appReady.then(() => {
       languages[lang] = repoData["languages"][lang] / nContributors || 0;
     });
 
+    // Dominant value
+    const dominantValue =
+      totalBytes /
+      Math.abs(
+        (repoData["userCommits"] / repoData["commits"] || 0) -
+          1 / nContributors,
+      );
+
     Object.keys(repoData["contributors"]).forEach((contributorID) => {
       if (!collaborators[contributorID]) {
         collaborators[contributorID] = {
@@ -34,6 +42,8 @@ appReady.then(() => {
           username: repoData["contributors"][contributorID],
           bytes: 0,
           langs: {},
+          dominantRepo: repo,
+          dominantRepoValue: -1,
         };
       }
       collaborators[contributorID]["ncolab"] += 1;
@@ -46,6 +56,12 @@ appReady.then(() => {
         }
         collaborators[contributorID]["langs"][lang] += languages[lang];
       });
+
+      // Check for dominant repository
+      if (dominantValue > collaborators[contributorID]["dominantRepoValue"]) {
+        collaborators[contributorID]["dominantRepoValue"] = dominantValue;
+        collaborators[contributorID]["dominantRepo"] = repo;
+      }
     });
   });
 
@@ -96,6 +112,12 @@ appReady.then(() => {
   bytesHeader.formatter = formatBytes;
   bytesHeader.footerAggregator = sum;
   headerRow.appendChild(bytesHeader);
+
+  // Dominant Repository column
+  const dominantRepoHeader = document.createElement("th");
+  dominantRepoHeader.style.textAlign = "center";
+  dominantRepoHeader.textContent = "Dominant Repository";
+  headerRow.appendChild(dominantRepoHeader);
 
   // Append header row to thead
   thead.appendChild(headerRow);
@@ -186,6 +208,18 @@ appReady.then(() => {
     cellBytes.dataset.originalValue = collabData["bytes"];
     cellBytes.textContent = bytesHeader.formatter(collabData["bytes"]);
     row.appendChild(cellBytes);
+
+    // Dominant Repository cell
+    const cellDominantRepo = document.createElement("td");
+    cellDominantRepo.style.textAlign = "left";
+    const dominantRepoUrl =
+      `<a href="` +
+      collabData["dominantRepo"] +
+      `" target="_blank" style="color: inherit; text-decoration: none;">` +
+      collabData["dominantRepo"].split("/").pop() +
+      `</a>`;
+    cellDominantRepo.innerHTML = dominantRepoUrl;
+    row.appendChild(cellDominantRepo);
 
     // Append the row to the tbody
     tbody.appendChild(row);

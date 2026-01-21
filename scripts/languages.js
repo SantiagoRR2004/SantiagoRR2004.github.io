@@ -82,6 +82,19 @@ appReady.then(() => {
   percentageContributedHeader.footerAggregator = average;
   headerRow.appendChild(percentageContributedHeader);
 
+  // Biggest Repository column
+  const biggestRepoHeader = document.createElement("th");
+  biggestRepoHeader.style.textAlign = "center";
+  biggestRepoHeader.textContent = "Biggest Repository";
+  headerRow.appendChild(biggestRepoHeader);
+
+  // Number of repositories column
+  const nReposHeader = document.createElement("th");
+  nReposHeader.style.textAlign = "center";
+  nReposHeader.textContent = "Repositories";
+  // nReposHeader.footerAggregator = sum;
+  headerRow.appendChild(nReposHeader);
+
   // Append header row to thead
   thead.appendChild(headerRow);
   languagesTable.appendChild(thead);
@@ -94,6 +107,8 @@ appReady.then(() => {
   let languageSizeOwned = {};
   let languageSizeCommits = {};
   let languageSizeContributed = {};
+  let biggestRepository = {};
+  let nRepositories = {};
 
   Object.keys(customRepos).forEach((repo) => {
     const languages = customRepos[repo]["languages"];
@@ -107,6 +122,8 @@ appReady.then(() => {
           languageSizeOwned[lang] = 0;
           languageSizeCommits[lang] = 0;
           languageSizeContributed[lang] = 0;
+          biggestRepository[lang] = { repo: repo, size: 0 };
+          nRepositories[lang] = 0;
         }
         languageSize[lang] += languages[lang];
         totalBytes += languages[lang];
@@ -125,13 +142,22 @@ appReady.then(() => {
         languageSizeContributed[lang] +=
           languages[lang] /
             (nContributors + (customRepos[repo]["userCommits"] ? 1 : 0)) || 0;
+
+        // Biggest Repository
+        if (languages[lang] > biggestRepository[lang]["size"]) {
+          biggestRepository[lang]["size"] = languages[lang];
+          biggestRepository[lang]["repo"] = repo;
+        }
+
+        // Number of repositories
+        nRepositories[lang] += 1;
       });
     }
   });
 
   // Sort languages by total size descending
   languageSize = Object.fromEntries(
-    Object.entries(languageSize).sort((a, b) => b[1] - a[1])
+    Object.entries(languageSize).sort((a, b) => b[1] - a[1]),
   );
 
   // Create body
@@ -173,7 +199,7 @@ appReady.then(() => {
     cellBytesOwned.style.textAlign = "center";
     cellBytesOwned.dataset.originalValue = languageSizeOwned[lang];
     cellBytesOwned.textContent = bytesOwnedHeader.formatter(
-      languageSizeOwned[lang]
+      languageSizeOwned[lang],
     );
     row.appendChild(cellBytesOwned);
 
@@ -192,7 +218,7 @@ appReady.then(() => {
     cellBytesCommits.style.textAlign = "center";
     cellBytesCommits.dataset.originalValue = languageSizeCommits[lang];
     cellBytesCommits.textContent = bytesCommitsHeader.formatter(
-      languageSizeCommits[lang]
+      languageSizeCommits[lang],
     );
     row.appendChild(cellBytesCommits);
 
@@ -203,7 +229,7 @@ appReady.then(() => {
       languageSizeCommits[lang] / languageSize[lang] || 0;
     cellPercentageCommits.dataset.originalValue = percentageCommitsValue;
     cellPercentageCommits.textContent = percentageCommitsHeader.formatter(
-      percentageCommitsValue
+      percentageCommitsValue,
     );
     row.appendChild(cellPercentageCommits);
 
@@ -212,7 +238,7 @@ appReady.then(() => {
     cellBytesContributed.style.textAlign = "center";
     cellBytesContributed.dataset.originalValue = languageSizeContributed[lang];
     cellBytesContributed.textContent = bytesContributedHeader.formatter(
-      languageSizeContributed[lang]
+      languageSizeContributed[lang],
     );
     row.appendChild(cellBytesContributed);
 
@@ -226,6 +252,26 @@ appReady.then(() => {
     cellPercentageContributed.textContent =
       percentageContributedHeader.formatter(percentageContributedValue);
     row.appendChild(cellPercentageContributed);
+
+    // Biggest Repository cell
+    const cellBiggestRepo = document.createElement("td");
+    cellBiggestRepo.style.textAlign = "left";
+    const biggestRepoInfo = biggestRepository[lang];
+    const biggestRepoUrl =
+      `<a href="` +
+      biggestRepoInfo["repo"] +
+      `" target="_blank" style="color: inherit; text-decoration: none;">` +
+      biggestRepoInfo["repo"].split("/").pop() +
+      `</a>`;
+    cellBiggestRepo.innerHTML = biggestRepoUrl;
+    row.appendChild(cellBiggestRepo);
+
+    // Number of repositories cell
+    const cellNRepositories = document.createElement("td");
+    cellNRepositories.style.textAlign = "center";
+    cellNRepositories.dataset.originalValue = nRepositories[lang];
+    cellNRepositories.textContent = nRepositories[lang];
+    row.appendChild(cellNRepositories);
 
     // Append the row to the tbody
     tbody.appendChild(row);
