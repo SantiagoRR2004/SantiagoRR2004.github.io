@@ -144,6 +144,10 @@ document.addEventListener("click", (event) => {
   rows.forEach((row) => tbody.appendChild(row));
 });
 
+function emptyAggregator(...values) {
+  return "";
+}
+
 function average(numbers) {
   const validNumbers = numbers
     .map((num) => parseFloat(num))

@@ -66,12 +66,14 @@ appReady.then(() => {
   const profileHeader = document.createElement("th");
   profileHeader.style.textAlign = "center";
   profileHeader.textContent = "";
+  profileHeader.footerAggregator = emptyAggregator;
   headerRow.appendChild(profileHeader);
 
   // User column
   const userHeader = document.createElement("th");
   userHeader.style.textAlign = "center";
   userHeader.textContent = "User";
+  userHeader.footerAggregator = emptyAggregator;
   headerRow.appendChild(userHeader);
 
   // Number of Collaborations column
