@@ -17,7 +17,7 @@ function addFooterToTables() {
     const footerRow = document.createElement("tr");
     footerRow.style.fontWeight = "bold";
 
-    // Add random value from each column
+    // Iterate through each column
     for (let i = 0; i < columnCount; i++) {
       const cell = document.createElement("td");
       cell.style.textAlign = "center";
@@ -47,6 +47,15 @@ function addFooterToTables() {
         if (headerCell.footerAggregator) {
           const aggregatedValue = headerCell.footerAggregator(columnValues);
           cell.textContent = aggregatedValue;
+        } else {
+          // Check if all values are numeric
+          const allNumeric = columnValues.every(
+            (val) => isNaN(val) || !isNaN(parseFloat(val)),
+          );
+          // Default to average
+          if (allNumeric) {
+            cell.textContent = average(columnValues).toFixed(2);
+          }
         }
 
         // If the header has a formatter function, apply it
@@ -101,14 +110,14 @@ document.addEventListener("click", (event) => {
       aCell && aCell.dataset && aCell.dataset.originalValue !== undefined
         ? aCell.dataset.originalValue
         : aCell
-        ? aCell.textContent.trim()
-        : "";
+          ? aCell.textContent.trim()
+          : "";
     const bRaw =
       bCell && bCell.dataset && bCell.dataset.originalValue !== undefined
         ? bCell.dataset.originalValue
         : bCell
-        ? bCell.textContent.trim()
-        : "";
+          ? bCell.textContent.trim()
+          : "";
 
     const aNum = parseFloat(aRaw);
     const bNum = parseFloat(bRaw);
@@ -118,8 +127,14 @@ document.addEventListener("click", (event) => {
     }
 
     return ascending
-      ? aRaw.localeCompare(bRaw, undefined, { numeric: true, sensitivity: "base" })
-      : bRaw.localeCompare(aRaw, undefined, { numeric: true, sensitivity: "base" });
+      ? aRaw.localeCompare(bRaw, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        })
+      : bRaw.localeCompare(aRaw, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        });
   });
 
   header.dataset.sort = ascending ? "asc" : "desc";
@@ -130,6 +145,8 @@ function average(numbers) {
   const validNumbers = numbers
     .map((num) => parseFloat(num))
     .filter((num) => !isNaN(num));
+
+  if (validNumbers.length === 0) return "";
 
   let total = 0;
   validNumbers.forEach((num) => {
