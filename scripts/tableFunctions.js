@@ -56,7 +56,7 @@ function addFooterToTables() {
           if (allNumeric) {
             const averageValue = average(columnValues);
             if (averageValue !== "") {
-              cell.textContent = averageValue.toFixed(2);
+              cell.textContent = averageValue.toFixed(2).replace(/\.?0+$/, "");
             }
           }
         }

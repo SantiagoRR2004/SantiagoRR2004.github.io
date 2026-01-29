@@ -1,8 +1,8 @@
 function normalFormatter(number) {
-  if (number === 0) return "";
-  return number;
+  const num = typeof number === "string" ? parseFloat(number) : number;
+  if (num === 0 || isNaN(num)) return "";
+  return num.toFixed(2).replace(/\.?0+$/, "");
 }
-
 
 function formatPercentage(value) {
   if (value !== 0) {
@@ -26,3 +26,7 @@ function formatBytes(num) {
   return `${num.toFixed(1)} PB`;
 }
 
+// Export for module usage
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { normalFormatter, formatPercentage, formatBytes };
+}

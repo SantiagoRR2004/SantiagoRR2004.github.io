@@ -92,7 +92,6 @@ appReady.then(() => {
   const nReposHeader = document.createElement("th");
   nReposHeader.style.textAlign = "center";
   nReposHeader.textContent = "Repositories";
-  // nReposHeader.footerAggregator = sum;
   headerRow.appendChild(nReposHeader);
 
   // Append header row to thead
