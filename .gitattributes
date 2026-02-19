@@ -1,0 +1,5 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Show robots.txt in language statistics
+robots.txt linguist-detectable=true
